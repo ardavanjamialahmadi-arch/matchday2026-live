@@ -127,6 +127,76 @@
   .modal-card h2 { font-family: 'Bebas Neue',cursive; font-size: 30px; color: #F0F0F0; letter-spacing: 1px; margin: 12px 0 16px; line-height: 1.1; }
   .modal-card .modal-body p { color: #C8C8D8; font-size: 15px; line-height: 1.7; margin-bottom: 14px; }
   .modal-card .modal-body strong { color: #FFD700; }
+
+  /* Account / auth */
+  #account-area { display: flex; align-items: center; gap: 10px; }
+  .acct-name { color: #FFD700; font-weight: 600; font-size: 13px; }
+  .premium-badge { background: linear-gradient(135deg,#FFD700,#C8883A); color: #0F0F1A; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: 1px; }
+  .btn-ghost { background: none; border: 1px solid rgba(255,215,0,0.33); color: #FFD700; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .auth-form { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+  .auth-form input { padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.33); background: #0F0F1A; color: #F0F0F0; font-size: 15px; outline: none; }
+  .auth-form button { background: #FFD700; color: #0F0F1A; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .auth-switch { color: #888; font-size: 13px; text-align: center; margin-top: 14px; }
+  .auth-switch a { color: #FFD700; cursor: pointer; font-weight: 600; }
+  .auth-msg { font-size: 13px; text-align: center; margin-top: 6px; min-height: 18px; }
+  .auth-tabs { display: flex; gap: 8px; margin-bottom: 4px; }
+  .auth-tabs button { flex: 1; background: #0F0F1A; border: 1px solid #333; color: #888; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+  .auth-tabs button.active { border-color: #FFD700; color: #FFD700; }
+
+  /* Pricing */
+  .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; }
+  .plan { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 14px; padding: 1.75rem; display: flex; flex-direction: column; }
+  .plan.featured { border-color: #FFD700; box-shadow: 0 0 0 1px rgba(255,215,0,0.4), 0 8px 30px rgba(255,215,0,0.08); }
+  .plan .pname { font-family: 'Bebas Neue',cursive; font-size: 24px; letter-spacing: 1px; color: #F0F0F0; }
+  .plan .price { font-family: 'Bebas Neue',cursive; font-size: 44px; color: #FFD700; line-height: 1; margin: 8px 0; }
+  .plan .price span { font-size: 15px; color: #888; }
+  .plan ul { list-style: none; margin: 16px 0; flex: 1; }
+  .plan li { color: #B0B0C0; font-size: 14px; padding: 6px 0; padding-left: 24px; position: relative; }
+  .plan li::before { content: '✓'; color: #4CAF50; position: absolute; left: 0; font-weight: 700; }
+  .plan li.no { color: #555; }
+  .plan li.no::before { content: '✕'; color: #555; }
+  .plan button { border: none; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .plan .buy { background: #FFD700; color: #0F0F1A; }
+  .plan .current { background: #0F0F1A; color: #4CAF50; border: 1px solid rgba(76,175,80,0.4); cursor: default; }
+
+  /* Leaderboard */
+  .lb-row { display: flex; align-items: center; gap: 14px; background: #1A1A2E; border: 1px solid rgba(255,215,0,0.1); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; }
+  .lb-rank { font-family: 'Bebas Neue',cursive; font-size: 22px; width: 36px; color: #666; }
+  .lb-row.top .lb-rank { color: #FFD700; }
+  .lb-name { flex: 1; font-weight: 600; color: #F0F0F0; }
+  .lb-pts { color: #FFD700; font-weight: 700; }
+  .lb-pts span { color: #666; font-size: 12px; font-weight: 400; }
+
+  /* Dashboard */
+  #dashboard { display: none; }
+  .dash-card { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; }
+  .dash-stat { display: inline-block; margin-right: 2rem; }
+  .dash-stat .v { font-family: 'Bebas Neue',cursive; font-size: 32px; color: #FFD700; line-height: 1; }
+  .dash-stat .k { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .my-pred { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,215,0,0.08); padding: 10px 0; font-size: 14px; color: #C8C8D8; }
+  .my-pred .sc { color: #FFD700; font-weight: 700; }
+
+  /* Share buttons */
+  .share-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+  .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; color: #fff; }
+  .share-x { background: #000; border: 1px solid #333; }
+  .share-wa { background: #25D366; color: #0F0F1A; }
+  .share-cp { background: rgba(255,215,0,0.13); color: #FFD700; border: 1px solid rgba(255,215,0,0.27); }
+
+  /* Fan shop (Amazon) */
+  .shop-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 16px; }
+  .shop-card { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; text-align: center; transition: border-color .2s, transform .2s; display: block; }
+  .shop-card:hover { border-color: #FFD700; transform: translateY(-3px); }
+  .shop-card .se { font-size: 40px; }
+  .shop-card .sn { color: #F0F0F0; font-weight: 700; font-size: 15px; margin: 10px 0 4px; }
+  .shop-card .sd { color: #888; font-size: 12px; line-height: 1.5; min-height: 36px; }
+  .shop-card .sb { display: inline-block; margin-top: 12px; background: rgba(255,215,0,0.13); color: #FFD700; border: 1px solid rgba(255,215,0,0.27); padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+
+  /* VPN / watch-anywhere banner */
+  .vpn-banner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; background: linear-gradient(135deg,#1A1A2E,#13233A); border: 1px solid rgba(79,195,247,0.27); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+  .vpn-banner .vt { color: #F0F0F0; font-weight: 700; font-size: 16px; }
+  .vpn-banner .vp { color: #B0B0C0; font-size: 13px; margin-top: 2px; }
+  .vpn-banner a { background: #4FC3F7; color: #0F0F1A; padding: 11px 22px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -142,11 +212,12 @@
     <div class="nav-links" id="nav-links">
       <a href="#scores">Scores</a>
       <a href="#predict">Predict</a>
-      <a href="#teams">Teams</a>
+      <a href="#leaderboard">Leaderboard</a>
       <a href="#analysis">Analysis</a>
-      <a href="#odds">Odds</a>
+      <a href="#shop">Shop</a>
+      <a href="#pricing">Premium</a>
       <a href="#travel">Travel</a>
-      <a href="#predict" class="btn-gold">Join Free</a>
+      <div id="account-area"></div>
     </div>
   </div>
 </nav>
@@ -173,6 +244,25 @@
   </section>
 
   <div class="container">
+    <!-- DASHBOARD (logged-in only) -->
+    <section class="block" id="dashboard">
+      <h2 class="sec">YOUR DASHBOARD</h2>
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
+          <div>
+            <div style="font-size:18px;font-weight:700;color:#F0F0F0;margin-bottom:4px;" id="dash-greeting">Welcome back</div>
+            <div id="dash-plan" style="color:#888;font-size:13px;"></div>
+          </div>
+          <div>
+            <div class="dash-stat"><div class="v" id="dash-pred-count">0</div><div class="k">Predictions</div></div>
+            <div class="dash-stat"><div class="v" id="dash-points">0</div><div class="k">Points</div></div>
+          </div>
+        </div>
+        <div id="dash-predictions" style="margin-top:18px;"></div>
+        <div class="share-row" id="dash-share"></div>
+      </div>
+    </section>
+
     <!-- SCORES -->
     <section class="block" id="scores">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
@@ -180,6 +270,7 @@
         <span style="color:#666;font-size:13px;">Group Stage · Jun 11–27</span>
       </div>
       <div id="matches"></div>
+      <div id="vpn-slot"></div>
     </section>
 
     <!-- TEAMS -->
@@ -210,6 +301,15 @@
       <div id="predict-matches"></div>
     </section>
 
+    <!-- LEADERBOARD -->
+    <section class="block" id="leaderboard">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px;">
+        <h2 class="sec" style="margin:0;">🏆 GLOBAL LEADERBOARD</h2>
+        <span style="color:#666;font-size:13px;">Updated live · Top 10</span>
+      </div>
+      <div id="leaderboard-list"></div>
+    </section>
+
     <!-- ANALYSIS -->
     <section class="block" id="analysis">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
@@ -233,6 +333,61 @@
       <h2 class="sec">FAN TRAVEL GUIDE</h2>
       <p style="color:#B0B0C0;margin-bottom:1.5rem;">16 stadiums across 3 countries. How to get there and where to stay.</p>
       <div class="venues" id="venues"></div>
+    </section>
+
+    <!-- FAN SHOP (Amazon affiliate) -->
+    <section class="block" id="shop">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px;">
+        <h2 class="sec" style="margin:0;">🛒 FAN SHOP</h2>
+        <span style="color:#666;font-size:13px;">Jerseys, gear &amp; matchday essentials</span>
+      </div>
+      <div class="shop-grid" id="gear-grid"></div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="block" id="pricing">
+      <h2 class="sec">GO PREMIUM</h2>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Unlock the full bracket, AI predictions, and advanced stats. Cancel anytime.</p>
+      <div class="plans">
+        <div class="plan">
+          <div class="pname">FREE</div>
+          <div class="price">$0</div>
+          <ul>
+            <li>Live scores &amp; fixtures</li>
+            <li>Predict group-stage matches</li>
+            <li>Global leaderboard</li>
+            <li class="no">Full knockout bracket</li>
+            <li class="no">AI match predictions</li>
+            <li class="no">Advanced team stats</li>
+          </ul>
+          <button class="current" id="plan-free-btn">Sign up free</button>
+        </div>
+        <div class="plan featured">
+          <div class="pname">PREMIUM <span class="premium-badge">POPULAR</span></div>
+          <div class="price">$4.99<span>/month</span></div>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Full knockout bracket predictor</li>
+            <li>AI predictions on every match</li>
+            <li>Advanced team &amp; player stats</li>
+            <li>Ad-free experience</li>
+            <li>Premium badge on the leaderboard</li>
+          </ul>
+          <button class="buy" onclick="buyPlan('monthly')">Upgrade Now</button>
+        </div>
+        <div class="plan">
+          <div class="pname">SEASON PASS</div>
+          <div class="price">$24.99<span>/once</span></div>
+          <ul>
+            <li>Everything in Premium</li>
+            <li>One payment, whole tournament</li>
+            <li>Save 17% vs monthly</li>
+            <li>Final &amp; knockout deep-dives</li>
+            <li>Priority new features</li>
+          </ul>
+          <button class="buy" onclick="buyPlan('season')">Get Season Pass</button>
+        </div>
+      </div>
     </section>
 
     <!-- NEWSLETTER -->
@@ -265,6 +420,27 @@
   </div>
 </div>
 
+<!-- Auth Modal -->
+<div class="modal-overlay" id="auth-modal" onclick="if(event.target===this)closeAuth()">
+  <div class="modal-card" style="max-width:420px;">
+    <button class="modal-close" onclick="closeAuth()" aria-label="Close">✕</button>
+    <div class="bebas" style="font-size:30px;color:#FFD700;letter-spacing:1px;">MATCHDAY 2026</div>
+    <p id="auth-subtitle" style="color:#888;font-size:14px;margin:4px 0 18px;">Create your free account</p>
+    <div class="auth-tabs">
+      <button id="tab-signup" class="active" onclick="setAuthMode('signup')">Sign up</button>
+      <button id="tab-login" onclick="setAuthMode('login')">Log in</button>
+    </div>
+    <form class="auth-form" id="auth-form" onsubmit="return submitAuth(event)">
+      <input type="text" id="auth-name" placeholder="Display name" autocomplete="nickname" />
+      <input type="email" id="auth-email" placeholder="your@email.com" autocomplete="email" required />
+      <input type="password" id="auth-password" placeholder="Password (min 6 characters)" autocomplete="current-password" minlength="6" required />
+      <button type="submit" id="auth-submit">Create account</button>
+      <div class="auth-msg" id="auth-msg"></div>
+    </form>
+    <p class="auth-switch" id="auth-switch"></p>
+  </div>
+</div>
+
 <footer>
   <div class="foot-inner">
     <div>
@@ -290,9 +466,91 @@
     <p>© 2026 MatchDay2026.net — Not affiliated with FIFA.</p>
     <p>Betting content for entertainment only. 18+ only. Gamble responsibly.</p>
   </div>
+  <div style="max-width:1200px;margin:1rem auto 0;">
+    <p style="color:#444;font-size:11px;line-height:1.6;">As an Amazon Associate and an affiliate partner of travel, ticketing, VPN and sportsbook brands, MatchDay 2026 may earn a commission from qualifying purchases and sign-ups made through links on this site — at no extra cost to you.</p>
+  </div>
 </footer>
 
+<!-- Supabase JS library (CDN — no build step). Must load before our script. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  // ---- Supabase config -------------------------------------------------
+  // The publishable key is SAFE to ship in client-side code. Never put the
+  // secret key (sb_secret_...) here — it would let anyone read your data.
+  var SUPABASE_URL = 'https://qukmdzrjkvqnjgfpexxz.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_16t-FyMIZgXd0Ekrh4E2LQ_S350qtfa';
+
+  // ---- Stripe Payment Links (create these in your Stripe dashboard) -----
+  // Dashboard -> Payment Links -> New. Paste the resulting URLs here.
+  var STRIPE_LINKS = {
+    monthly: 'PASTE_STRIPE_MONTHLY_PAYMENT_LINK',   // $4.99 / month
+    season:  'PASTE_STRIPE_SEASON_PAYMENT_LINK'     // one-time season pass
+  };
+
+  // ---- Affiliate links (your money) ------------------------------------
+  // As each program approves you, paste your tracked URL / ID here ONCE and
+  // every button on the page updates. Until then, plain links still work.
+  var AFFILIATES = {
+    // Betting: replace each homepage with your approved affiliate tracking URL.
+    bookies: {
+      'Bet365':     'https://www.bet365.com',
+      'DraftKings': 'https://sportsbook.draftkings.com',
+      'BetMGM':     'https://sports.betmgm.com'
+    },
+    // Travel: paste just your partner IDs; leave blank to use plain search links.
+    bookingAid:           '',   // Booking.com affiliate id  (becomes &aid=...)
+    getYourGuidePartner:  '',   // GetYourGuide partner id   (becomes &partner_id=...)
+    // (Airbnb has no open affiliate program, so those stay as plain search links.)
+
+    // Amazon Associates: your tracking tag, e.g. 'matchday2026-20' (becomes &tag=...)
+    amazonTag:            '',
+    // Match tickets: a resale partner search link. Blank = plain SeatGeek search.
+    ticketsBase:          '',   // e.g. your SeatGeek/StubHub affiliate search URL
+    // VPN affiliate (high payout — fans abroad who can't stream in their country):
+    vpnUrl:               '',   // your VPN affiliate link (NordVPN / ExpressVPN / Surfshark)
+    vpnName:              'NordVPN'
+  };
+
+  // Google AdSense: paste your IDs once approved. Blank = shows a placeholder.
+  var ADSENSE_CLIENT = '';      // e.g. 'ca-pub-1234567890123456'
+  var ADSENSE_SLOT   = '';      // the ad unit id
+
+  // Build a travel search URL with your affiliate ID attached when present.
+  function travelUrl(provider, q) {
+    if (provider === 'booking') {
+      return 'https://www.booking.com/searchresults.html?ss=' + q +
+        (AFFILIATES.bookingAid ? '&aid=' + encodeURIComponent(AFFILIATES.bookingAid) : '');
+    }
+    if (provider === 'airbnb') {
+      return 'https://www.airbnb.com/s/' + q;
+    }
+    return 'https://www.getyourguide.com/s/?q=' + q +
+      (AFFILIATES.getYourGuidePartner ? '&partner_id=' + encodeURIComponent(AFFILIATES.getYourGuidePartner) : '');
+  }
+
+  // Amazon search URL with your Associates tag attached when present.
+  function amazonUrl(query) {
+    return 'https://www.amazon.com/s?k=' + encodeURIComponent(query) +
+      (AFFILIATES.amazonTag ? '&tag=' + encodeURIComponent(AFFILIATES.amazonTag) : '');
+  }
+
+  // Tickets search URL (your affiliate base if set, else a plain SeatGeek search).
+  function ticketsUrl(query) {
+    if (AFFILIATES.ticketsBase) {
+      return AFFILIATES.ticketsBase + (AFFILIATES.ticketsBase.indexOf('?')===-1?'?':'&') + 'q=' + encodeURIComponent(query);
+    }
+    return 'https://seatgeek.com/search?q=' + encodeURIComponent(query);
+  }
+
+  // ---- Live scores (optional) ------------------------------------------
+  // Leave blank to show the scheduled matches. To go truly live during the
+  // tournament, add a sports-data API (see notes from Claude).
+  var SPORTS_API_KEY = '';
+  // ----------------------------------------------------------------------
+
+  // The Supabase client (global `supabase` comes from the CDN script above).
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   // Countdown
   var kickoff = new Date('2026-06-11').getTime();
   var days = Math.ceil((kickoff - Date.now()) / 86400000);
@@ -344,11 +602,11 @@
   }).join('');
 
   document.getElementById('predict-matches').innerHTML = MATCHES.slice(0,3).map(function(m){
-    return '<div class="match" style="justify-content:center;gap:16px;">' +
+    return '<div class="match" data-label="'+m.home+' vs '+m.away+'" style="justify-content:center;gap:16px;">' +
       '<div class="teams"><img loading="lazy" decoding="async" src="'+flag(m.hf,32,24)+'" width="32" height="24"/><span style="font-weight:600;">'+m.home+'</span></div>' +
-      '<input type="number" min="0" max="20" placeholder="0" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
+      '<input type="number" min="0" max="20" placeholder="0" class="pred-home" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
       '<span style="color:#666;">–</span>' +
-      '<input type="number" min="0" max="20" placeholder="0" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
+      '<input type="number" min="0" max="20" placeholder="0" class="pred-away" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
       '<div class="teams"><span style="font-weight:600;">'+m.away+'</span><img loading="lazy" decoding="async" src="'+flag(m.af,32,24)+'" width="32" height="24"/></div></div>';
   }).join('') + '<button id="submit-predictions" class="btn-fill" style="width:100%;border:none;cursor:pointer;padding:14px;margin-top:8px;font-size:16px;">Submit Predictions</button>' +
     '<p id="predict-success" class="hidden" style="text-align:center;color:#4CAF50;font-weight:600;margin-top:12px;">✅ Predictions saved! Good luck climbing the leaderboard.</p>';
@@ -401,7 +659,7 @@
     {home:'Mexico',away:'South Africa',hf:'mx',af:'za',date:'Jun 11',rows:[['Bet365','2.10','3.40','3.20'],['DraftKings','2.15','3.35','3.10'],['BetMGM','2.05','3.50','3.25']]},
     {home:'Canada',away:'Bosnia',hf:'ca',af:'ba',date:'Jun 12',rows:[['Bet365','2.80','3.20','2.50'],['DraftKings','2.75','3.25','2.55'],['BetMGM','2.85','3.15','2.45']]}
   ];
-  var BOOKIES = { 'Bet365':'https://www.bet365.com', 'DraftKings':'https://sportsbook.draftkings.com', 'BetMGM':'https://sports.betmgm.com' };
+  var BOOKIES = AFFILIATES.bookies; // edit URLs in the AFFILIATES config at the top
   document.getElementById('odds-tables').innerHTML = ODDS.map(function(o){
     var rows = o.rows.map(function(r,i){
       var url = BOOKIES[r[0]] || '#';
@@ -434,36 +692,136 @@
       '<div style="text-align:right;"><div style="color:#F0F0F0;font-weight:700;">'+v.matches+'</div><div style="color:#666;font-size:11px;">matches</div></div></div>' +
       '<div class="tip">💡 '+v.tip+'</div>' +
       '<div class="travel-links">' +
-      '<a href="https://www.booking.com/searchresults.html?ss='+q+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(255,107,53,0.13);color:#FF8A65;border:1px solid rgba(255,107,53,0.27);">Hotels ↗</a>' +
-      '<a href="https://www.airbnb.com/s/'+q+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(230,57,70,0.13);color:#E63946;border:1px solid rgba(230,57,70,0.27);">Airbnb ↗</a>' +
-      '<a href="https://www.getyourguide.com/s/?q='+q+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(255,215,0,0.13);color:#FFD700;border:1px solid rgba(255,215,0,0.27);">Tours ↗</a>' +
+      '<a href="'+travelUrl('booking',q)+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(255,107,53,0.13);color:#FF8A65;border:1px solid rgba(255,107,53,0.27);">Hotels ↗</a>' +
+      '<a href="'+travelUrl('airbnb',q)+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(230,57,70,0.13);color:#E63946;border:1px solid rgba(230,57,70,0.27);">Airbnb ↗</a>' +
+      '<a href="'+travelUrl('getyourguide',q)+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(255,215,0,0.13);color:#FFD700;border:1px solid rgba(255,215,0,0.27);">Tours ↗</a>' +
+      '<a href="'+ticketsUrl(v.city+' World Cup 2026')+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(76,175,80,0.13);color:#4CAF50;border:1px solid rgba(76,175,80,0.27);">Tickets ↗</a>' +
       '</div></div>';
   }).join('');
 
+  // ----- Fan shop (Amazon affiliate) -----
+  var GEAR = [
+    {e:'👕', n:'Team Jerseys',    d:'Official 2026 home & away kits for every nation.', q:'2026 world cup soccer jersey'},
+    {e:'⚽', n:'Match Balls',     d:'The official 2026 ball & training replicas.',     q:'2026 world cup soccer ball'},
+    {e:'🧣', n:'Scarves & Flags', d:'Rep your country in the stands or at home.',       q:'world cup country flag scarf'},
+    {e:'👟', n:'Boots & Cleats',  d:'Pro football boots worn by the stars.',            q:'soccer cleats football boots'},
+    {e:'🎽', n:'Fan Apparel',     d:'Tees, hoodies & caps for matchday.',               q:'world cup soccer fan shirt'},
+    {e:'📺', n:'Watch Party',     d:'Everything for the perfect watch party.',          q:'soccer watch party supplies'}
+  ];
+  var gg = document.getElementById('gear-grid');
+  if (gg) {
+    gg.innerHTML = GEAR.map(function(g){
+      return '<a class="shop-card" href="'+amazonUrl(g.q)+'" target="_blank" rel="nofollow noopener sponsored">' +
+        '<div class="se">'+g.e+'</div><div class="sn">'+g.n+'</div>' +
+        '<div class="sd">'+g.d+'</div><span class="sb">Shop on Amazon ↗</span></a>';
+    }).join('');
+  }
+
+  // ----- "Watch from anywhere" VPN banner (high-payout affiliate) -----
+  var vslot = document.getElementById('vpn-slot');
+  if (vslot) {
+    var vpnHref = AFFILIATES.vpnUrl || 'https://nordvpn.com';
+    vslot.innerHTML = '<div class="vpn-banner"><div>' +
+      '<div class="vt">📺 Can\'t watch the matches in your country?</div>' +
+      '<div class="vp">Stream every game from anywhere with a VPN — fast, private, works on every device.</div></div>' +
+      '<a href="'+vpnHref+'" target="_blank" rel="nofollow noopener sponsored">Get '+(AFFILIATES.vpnName||'VPN')+' →</a></div>';
+  }
+
+  // ----- Google AdSense (renders only once you add your IDs above) -----
+  (function initAds(){
+    var adDiv = document.querySelector('.ad');
+    if (!adDiv || !ADSENSE_CLIENT || !ADSENSE_SLOT) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(ADSENSE_CLIENT);
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
+    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="' + ADSENSE_CLIENT +
+      '" data-ad-slot="' + ADSENSE_SLOT + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  })();
+
   function subscribe() {
-    var email = document.getElementById('nl-email').value;
-    if (!email || email.indexOf('@') === -1) { alert('Please enter a valid email'); return; }
-    // Stores locally for now. Connect to Supabase later.
-    document.getElementById('nl-form').classList.add('hidden');
-    document.getElementById('nl-success').classList.remove('hidden');
+    var input = document.getElementById('nl-email');
+    var email = (input.value || '').trim();
+    // Simple but real email check: something@something.tld
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email'); return; }
+
+    var btn = document.querySelector('#nl-form button');
+    var original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Joining…';
+
+    function showSuccess() {
+      document.getElementById('nl-form').classList.add('hidden');
+      document.getElementById('nl-success').classList.remove('hidden');
+    }
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = original;
+      alert('Something went wrong. Please try again in a moment.');
+    }
+
+    fetch(SUPABASE_URL + '/rest/v1/subscribers', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email: email })
+    }).then(function (res) {
+      // 201 = inserted, 409 = already subscribed (unique email). Both are a win for the user.
+      if (res.ok || res.status === 409) { showSuccess(); }
+      else { res.text().then(function (t) { console.error('Subscribe failed:', res.status, t); }); fail(); }
+    }).catch(function (err) {
+      console.error('Subscribe network error:', err);
+      fail();
+    });
   }
 
   // Submit Predictions button
   var subBtn = document.getElementById('submit-predictions');
   if (subBtn) {
-    subBtn.addEventListener('click', function() {
+    subBtn.addEventListener('click', async function() {
+      // Predictions must belong to a user (for the dashboard + leaderboard).
+      var sessionRes = await sb.auth.getSession();
+      if (!sessionRes.data.session) {
+        openAuth('signup', 'Create a free account to save your predictions and join the leaderboard.');
+        return;
+      }
+      var userId = sessionRes.data.session.user.id;
+
+      var rows = [];
+      document.querySelectorAll('#predict-matches .match').forEach(function(row) {
+        var home = row.querySelector('.pred-home').value;
+        var away = row.querySelector('.pred-away').value;
+        if (home === '' && away === '') return; // skip matches left blank
+        rows.push({
+          user_id: userId,
+          match_label: row.getAttribute('data-label'),
+          home_score: home === '' ? null : parseInt(home, 10),
+          away_score: away === '' ? null : parseInt(away, 10)
+        });
+      });
+      if (rows.length === 0) { alert('Enter at least one score to submit.'); return; }
+
+      subBtn.disabled = true;
+      subBtn.textContent = 'Submitting…';
+
+      var result = await sb.from('predictions').insert(rows);
+      if (result.error) {
+        console.error('Predictions failed:', result.error);
+        subBtn.disabled = false;
+        subBtn.textContent = 'Submit Predictions';
+        alert('Could not save your predictions. Please try again.');
+        return;
+      }
       document.getElementById('predict-success').classList.remove('hidden');
       subBtn.textContent = 'Predictions Submitted ✓';
       subBtn.style.opacity = '0.7';
-    });
-  }
-
-  // Upgrade Now button -> scroll to newsletter signup
-  var upBtn = document.getElementById('upgrade-btn');
-  if (upBtn) {
-    upBtn.addEventListener('click', function() {
-      document.getElementById('nl-email').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      document.getElementById('nl-email').focus();
+      if (typeof refreshAccount === 'function') refreshAccount();
     });
   }
 
@@ -477,6 +835,212 @@
 
   // Close article modal with Escape key
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeArticle(); });
+
+  // Repoint the inline "Upgrade Now" box to real checkout.
+  var upBtn2 = document.getElementById('upgrade-btn');
+  if (upBtn2) { upBtn2.onclick = function(){ buyPlan('monthly'); }; }
+</script>
+
+<!-- ============ ACCOUNTS · LEADERBOARD · PREMIUM · SHARE ============ -->
+<script>
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+
+  // ---------- Auth modal ----------
+  var authMode = 'signup';
+  function openAuth(mode, subtitle) {
+    setAuthMode(mode || 'signup');
+    if (subtitle) document.getElementById('auth-subtitle').textContent = subtitle;
+    document.getElementById('auth-msg').textContent = '';
+    document.getElementById('auth-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAuth() {
+    document.getElementById('auth-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function setAuthMode(mode) {
+    authMode = mode;
+    var isSignup = mode === 'signup';
+    document.getElementById('tab-signup').classList.toggle('active', isSignup);
+    document.getElementById('tab-login').classList.toggle('active', !isSignup);
+    document.getElementById('auth-name').style.display = isSignup ? 'block' : 'none';
+    document.getElementById('auth-submit').textContent = isSignup ? 'Create account' : 'Log in';
+    document.getElementById('auth-subtitle').textContent = isSignup ? 'Create your free account' : 'Welcome back';
+    document.getElementById('auth-msg').textContent = '';
+  }
+  async function submitAuth(e) {
+    e.preventDefault();
+    var email = document.getElementById('auth-email').value.trim();
+    var password = document.getElementById('auth-password').value;
+    var name = document.getElementById('auth-name').value.trim();
+    var msg = document.getElementById('auth-msg');
+    var btn = document.getElementById('auth-submit');
+    var orig = btn.textContent;
+    msg.style.color = '#E63946';
+    btn.disabled = true; btn.textContent = 'Please wait…';
+    try {
+      if (authMode === 'signup') {
+        var r = await sb.auth.signUp({ email: email, password: password, options: { data: { display_name: name || email.split('@')[0] } } });
+        if (r.error) { msg.textContent = r.error.message; }
+        else if (r.data.session) { closeAuth(); }          // email confirmation off → straight in
+        else { msg.style.color = '#4CAF50'; msg.textContent = 'Almost there — check your email to confirm, then log in.'; }
+      } else {
+        var r2 = await sb.auth.signInWithPassword({ email: email, password: password });
+        if (r2.error) { msg.textContent = r2.error.message; } else { closeAuth(); }
+      }
+    } catch (err) { console.error(err); msg.textContent = 'Something went wrong. Please try again.'; }
+    btn.disabled = false; btn.textContent = orig;
+    return false;
+  }
+  async function logout() { await sb.auth.signOut(); }
+
+  // ---------- Account state ----------
+  var currentProfile = null;
+
+  function renderAccountArea(user, profile) {
+    var area = document.getElementById('account-area');
+    if (!area) return;
+    if (!user) {
+      area.innerHTML = '<button class="btn-ghost" onclick="openAuth(\'login\')">Log in</button>' +
+        '<a href="#" class="btn-gold" onclick="openAuth(\'signup\');return false;">Join Free</a>';
+    } else {
+      var name = (profile && profile.display_name) || user.email.split('@')[0];
+      var badge = (profile && profile.is_premium) ? ' <span class="premium-badge">PREMIUM</span>' : '';
+      area.innerHTML = '<a href="#dashboard" class="acct-name">' + escapeHtml(name) + '</a>' + badge +
+        ' <button class="btn-ghost" onclick="logout()">Log out</button>';
+    }
+  }
+
+  async function refreshAccount() {
+    var sres = await sb.auth.getSession();
+    var session = sres.data.session;
+    var dash = document.getElementById('dashboard');
+    if (!session) {
+      currentProfile = null;
+      renderAccountArea(null, null);
+      if (dash) dash.style.display = 'none';
+      applyPremiumUI(false);
+      return;
+    }
+    var user = session.user;
+    var pr = await sb.from('profiles').select('display_name,is_premium,points').eq('id', user.id).single();
+    currentProfile = pr.data || { display_name: user.email.split('@')[0], is_premium: false, points: 0 };
+    renderAccountArea(user, currentProfile);
+    applyPremiumUI(!!currentProfile.is_premium);
+    await renderDashboard(user, currentProfile);
+  }
+
+  async function renderDashboard(user, profile) {
+    var dash = document.getElementById('dashboard');
+    if (!dash) return;
+    dash.style.display = 'block';
+    document.getElementById('dash-greeting').textContent = 'Welcome back, ' + (profile.display_name || 'fan') + '!';
+    document.getElementById('dash-plan').textContent = profile.is_premium
+      ? '⭐ Premium member — full access unlocked'
+      : 'Free plan — upgrade for the full bracket + AI predictions';
+    document.getElementById('dash-points').textContent = profile.points || 0;
+
+    var preds = await sb.from('predictions').select('match_label,home_score,away_score,created_at').eq('user_id', user.id).order('created_at', { ascending: false });
+    var list = preds.data || [];
+    document.getElementById('dash-pred-count').textContent = list.length;
+    var box = document.getElementById('dash-predictions');
+    if (list.length === 0) {
+      box.innerHTML = '<p style="color:#888;font-size:14px;">No predictions yet. <a href="#predict" style="color:#FFD700;">Make your first pick →</a></p>';
+    } else {
+      box.innerHTML = '<div style="color:#888;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Your picks</div>' +
+        list.slice(0, 12).map(function(p){
+          return '<div class="my-pred"><span>' + escapeHtml(p.match_label || 'Match') + '</span>' +
+            '<span class="sc">' + (p.home_score==null?'–':p.home_score) + ' : ' + (p.away_score==null?'–':p.away_score) + '</span></div>';
+        }).join('');
+    }
+    var picks = list.slice(0,5).map(function(p){ return p.match_label + ' ' + (p.home_score==null?'?':p.home_score) + '-' + (p.away_score==null?'?':p.away_score); }).join(' · ');
+    renderShare('dash-share', list.length ? ('My World Cup 2026 picks 👉 ' + picks) : 'I just joined MatchDay 2026 to predict the World Cup! ⚽');
+  }
+
+  // Premium gating hook: add data-premium="1" to ANY element to lock it for free users.
+  function applyPremiumUI(isPremium) {
+    document.querySelectorAll('[data-premium]').forEach(function(el){
+      if (isPremium) { el.style.filter=''; el.style.pointerEvents=''; el.removeAttribute('title'); }
+      else { el.style.filter='blur(4px)'; el.style.pointerEvents='none'; el.title='Premium only — upgrade to unlock'; }
+    });
+  }
+
+  // ---------- Leaderboard ----------
+  async function loadLeaderboard() {
+    var box = document.getElementById('leaderboard-list');
+    if (!box) return;
+    var r = await sb.from('leaderboard').select('display_name,points').limit(10);
+    if (r.error) { console.error('Leaderboard:', r.error); }
+    var rows = r.data || [];
+    if (rows.length === 0) {
+      box.innerHTML = '<div class="lb-row"><span class="lb-rank">—</span><span class="lb-name" style="color:#888;font-weight:400;">Be the first on the board — make a prediction!</span></div>';
+      return;
+    }
+    box.innerHTML = rows.map(function(row, i){
+      var medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':String(i+1);
+      return '<div class="lb-row' + (i<3?' top':'') + '"><span class="lb-rank">' + medal + '</span>' +
+        '<span class="lb-name">' + escapeHtml(row.display_name || 'Anonymous') + '</span>' +
+        '<span class="lb-pts">' + (row.points||0) + ' <span>pts</span></span></div>';
+    }).join('');
+  }
+
+  // ---------- Stripe checkout ----------
+  async function buyPlan(plan) {
+    var sres = await sb.auth.getSession();
+    if (!sres.data.session) { openAuth('signup', 'Create your free account first, then complete checkout.'); return; }
+    var link = STRIPE_LINKS[plan];
+    if (!link || link.indexOf('PASTE_') === 0) {
+      alert('Checkout isn\'t live yet — add your Stripe Payment Links in the config to enable it.');
+      return;
+    }
+    var email = sres.data.session.user.email;
+    var url = link + (link.indexOf('?')===-1?'?':'&') + 'prefilled_email=' + encodeURIComponent(email);
+    window.location.href = url;
+  }
+
+  // ---------- Share ----------
+  function renderShare(containerId, text) {
+    var el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML =
+      '<button class="share-btn share-x" data-net="x">𝕏 Share</button>' +
+      '<button class="share-btn share-wa" data-net="wa">WhatsApp</button>' +
+      '<button class="share-btn share-cp" data-net="copy">Copy</button>';
+    el.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){ shareTo(b.getAttribute('data-net'), text); });
+    });
+  }
+  function shareTo(net, text) {
+    var url = 'https://matchday2026.net';
+    if (net === 'x') { window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank', 'noopener'); }
+    else if (net === 'wa') { window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener'); }
+    else {
+      var payload = text + ' ' + url;
+      if (navigator.clipboard) { navigator.clipboard.writeText(payload).then(function(){ alert('Copied! Paste it anywhere.'); }); }
+      else { window.prompt('Copy this:', payload); }
+    }
+  }
+
+  // ---------- Live scores (scaffold) ----------
+  // Without an API key we keep the scheduled view. During the tournament,
+  // plug your sports-data provider in here to swap in live scores.
+  async function refreshLiveScores() {
+    if (!SPORTS_API_KEY) return;
+    try {
+      // var res = await fetch('https://YOUR_PROVIDER/fixtures?date=today', { headers: { 'x-apisports-key': SPORTS_API_KEY } });
+      // var data = await res.json();  // → map into #matches with live scores, then setInterval(refreshLiveScores, 60000)
+    } catch (err) { console.error('Live scores:', err); }
+  }
+
+  // ---------- Boot ----------
+  var freeBtn = document.getElementById('plan-free-btn');
+  if (freeBtn) freeBtn.addEventListener('click', function(){ openAuth('signup'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAuth(); });
+
+  sb.auth.onAuthStateChange(function(){ refreshAccount(); });
+  refreshAccount();
+  loadLeaderboard();
+  refreshLiveScores();
 </script>
 </body>
 </html>
