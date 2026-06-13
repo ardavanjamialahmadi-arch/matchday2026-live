@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MatchDay 2026 | FIFA World Cup Hub</title>
+<meta name="description" content="Live scores, predictions, team stats, travel guides and AI match analysis for FIFA World Cup 2026 - Canada, USA & Mexico" />
+<meta name="keywords" content="World Cup 2026, FIFA, soccer, football, live scores, predictions, bracket" />
+<meta property="og:title" content="MatchDay 2026 | FIFA World Cup Hub" />
+<meta property="og:description" content="Your ultimate destination for World Cup 2026" />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://flagcdn.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #0F0F1A; color: #F0F0F0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+  a { text-decoration: none; }
+  .bebas { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #1A1A2E; }
+  ::-webkit-scrollbar-thumb { background: #FFD700; border-radius: 3px; }
+
+  /* Navbar */
+  nav { background: #1A1A2E; border-bottom: 1px solid rgba(255,215,0,0.2); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+  .nav-links a { color: #B0B0C0; font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: #FFD700; }
+  .btn-gold { background: #FFD700; color: #0F0F1A; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; }
+  @media (max-width: 820px) {
+    #menu-toggle { display: block !important; }
+    .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; background: #1A1A2E; flex-direction: column; align-items: stretch; padding: 1rem 1.5rem; gap: 1rem; border-bottom: 1px solid rgba(255,215,0,0.2); }
+    .nav-links.open { display: flex; }
+    .nav-links a:not(.btn-gold) { display: block; }
+    .nav-links .btn-gold { text-align: center; }
+  }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; padding: 5rem 1.5rem 4rem; text-align: center; background: linear-gradient(180deg,#1A1A2E 0%,#0F0F1A 100%); }
+  .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(255,215,0,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(230,57,70,0.08) 0%, transparent 60%); pointer-events: none; }
+  .hero h1 { font-size: clamp(3rem,10vw,7rem); line-height: 1; color: #F0F0F0; letter-spacing: 4px; margin-bottom: 1rem; }
+  .badge-red { display: inline-block; background: #E63946; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 4px; letter-spacing: 2px; margin-bottom: 1rem; }
+  .countdown { display: flex; justify-content: center; gap: 1.5rem; margin: 2.5rem 0; flex-wrap: wrap; }
+  .stat .num { font-family: 'Bebas Neue',cursive; font-size: 48px; color: #FFD700; line-height: 1; }
+  .stat .lbl { color: #666; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-outline { border: 1px solid rgba(255,215,0,0.33); color: #FFD700; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; }
+  .btn-fill { background: #FFD700; color: #0F0F1A; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; }
+
+  section.block { margin-top: 3rem; }
+  h2.sec { font-family: 'Bebas Neue',cursive; font-size: 32px; color: #F0F0F0; letter-spacing: 2px; margin-bottom: 1.25rem; }
+
+  /* Match cards */
+  .match { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 10px; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+  .match .teams { display: flex; align-items: center; gap: 14px; }
+  .match .teams img { border-radius: 2px; }
+  .vs { color: #FFD700; font-family: 'Bebas Neue',cursive; font-size: 20px; }
+  .match .meta { text-align: center; }
+  .match .meta .d { color: #FFD700; font-size: 13px; font-weight: 600; }
+  .match .meta .s { color: #666; font-size: 12px; }
+  .pill { background: #0F0F1A; border: 1px solid #333; color: #999; font-size: 11px; padding: 3px 8px; border-radius: 4px; }
+  .predict-btn { background: rgba(255,215,0,0.13); color: #FFD700; border: 1px solid rgba(255,215,0,0.27); padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  /* Live fixtures / scoreboard cards */
+  .fixtures { display: grid; grid-template-columns: repeat(auto-fill,minmax(330px,1fr)); gap: 14px; }
+  .fixture { background: linear-gradient(180deg,#20203a 0%,#1A1A2E 100%); border: 1px solid rgba(255,215,0,0.12); border-radius: 14px; padding: 1rem 1.25rem; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+  .fixture:hover { border-color: rgba(255,215,0,0.45); transform: translateY(-3px); box-shadow: 0 12px 34px rgba(0,0,0,0.4); }
+  .fixture.is-live { border-color: rgba(230,57,70,0.45); }
+  .fx-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .fx-group { background: #0F0F1A; border: 1px solid #333; color: #9a9ab0; font-size: 11px; font-weight: 600; letter-spacing: .5px; padding: 3px 10px; border-radius: 999px; }
+  .mstatus { font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 4px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .mstatus.upc { color: #FFD700; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.25); }
+  .mstatus.live { color: #fff; background: rgba(230,57,70,0.2); border: 1px solid rgba(230,57,70,0.55); }
+  .mstatus.ft { color: #9a9ab0; background: rgba(255,255,255,0.05); border: 1px solid #333; }
+  .livedot { width: 8px; height: 8px; border-radius: 50%; background: #E63946; box-shadow: 0 0 0 0 rgba(230,57,70,.7); animation: livepulse 1.4s infinite; }
+  @keyframes livepulse { 0% { box-shadow: 0 0 0 0 rgba(230,57,70,.7); } 70% { box-shadow: 0 0 0 7px rgba(230,57,70,0); } 100% { box-shadow: 0 0 0 0 rgba(230,57,70,0); } }
+  .fx-main { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; }
+  .fx-team { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .fx-team.away { flex-direction: row-reverse; }
+  .fx-team img { border-radius: 3px; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  .fx-team .tn { font-weight: 700; font-size: 15px; color: #F0F0F0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fx-score { font-family: 'Bebas Neue',cursive; font-size: 32px; color: #FFD700; letter-spacing: 1px; line-height: 1; min-width: 76px; text-align: center; }
+  .fx-score .sep { color: #555; margin: 0 5px; }
+  .fx-vs { font-family: 'Bebas Neue',cursive; color: #555; font-size: 18px; min-width: 76px; text-align: center; }
+  .fx-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 11px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .fx-stadium { color: #777; font-size: 12px; display: flex; align-items: center; gap: 6px; min-width: 0; overflow: hidden; }
+  .fx-stadium span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fx-predict { background: rgba(255,215,0,0.12); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 6px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s ease; white-space: nowrap; }
+  .fx-predict:hover { background: rgba(255,215,0,0.22); }
+  .live-pill { display: inline-flex; align-items: center; gap: 7px; color: #fff; background: rgba(230,57,70,0.18); border: 1px solid rgba(230,57,70,0.5); font-size: 12px; font-weight: 700; letter-spacing: 1px; padding: 5px 12px; border-radius: 999px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  }
+
+  /* Team grid */
+  .teams-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(130px,1fr)); gap: 12px; }
+  .team-card { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 10px; padding: 1.25rem 1rem; text-align: center; transition: border-color .2s; }
+  .team-card:hover { border-color: #FFD700; }
+  .team-card img { border-radius: 4px; margin-bottom: 8px; }
+  .team-card .nm { color: #F0F0F0; font-weight: 600; font-size: 13px; }
+  .team-card .gp { color: #666; font-size: 11px; margin-top: 2px; }
+
+  /* Feature cards */
+  .features { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; }
+  .feature { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; transition: border-color .2s; cursor: pointer; }
+  .feature .ic { font-size: 36px; margin-bottom: 12px; }
+  .feature h3 { font-family: 'Bebas Neue',cursive; font-size: 22px; letter-spacing: 1px; margin-bottom: 8px; }
+  .feature p { color: #B0B0C0; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+  .feature .cta { font-size: 13px; font-weight: 600; }
+
+  /* Newsletter */
+  .newsletter { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.2); border-radius: 12px; padding: 3rem 2rem; text-align: center; margin: 3rem 0; }
+  .newsletter h2 { font-family: 'Bebas Neue',cursive; font-size: 36px; color: #FFD700; letter-spacing: 2px; margin-bottom: 8px; }
+  .newsletter p { color: #B0B0C0; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .nl-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .nl-form input { flex: 1; min-width: 240px; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.33); background: #0F0F1A; color: #F0F0F0; font-size: 15px; outline: none; }
+  .nl-form button { background: #FFD700; color: #0F0F1A; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+
+  /* Odds table */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { padding: 8px 12px; color: #888; font-weight: 500; text-align: left; border-bottom: 1px solid #333; }
+  td { padding: 12px; }
+  .best { color: #4CAF50; font-weight: 700; }
+  .bet-link { background: rgba(76,175,80,0.13); color: #4CAF50; border: 1px solid rgba(76,175,80,0.27); padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+
+  /* Travel */
+  .venues { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 20px; }
+  .venue { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; }
+  .venue h3 { font-family: 'Bebas Neue',cursive; font-size: 22px; color: #FFD700; letter-spacing: 1px; }
+  .tip { background: #0F0F1A; border-radius: 8px; padding: .75rem; font-size: 13px; color: #B0B0C0; line-height: 1.6; margin: 12px 0 16px; }
+  .travel-links { display: flex; gap: 8px; }
+  .travel-links a { flex: 1; padding: 8px; border-radius: 6px; font-size: 12px; font-weight: 600; text-align: center; }
+
+  /* Blog */
+  .article { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; margin-bottom: 16px; transition: border-color .2s; cursor: pointer; }
+  .article:hover { border-color: rgba(255,215,0,0.33); }
+  .tag { background: rgba(255,215,0,0.13); color: #FFD700; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+  .article h3 { color: #F0F0F0; font-size: 19px; font-weight: 700; margin: 10px 0 8px; }
+  .article p { color: #888; font-size: 14px; line-height: 1.6; }
+
+  /* Ad */
+  .ad { background: #1A1A2E; border: 1px dashed #333; border-radius: 8px; padding: 1.5rem; text-align: center; margin: 2rem 0; color: #444; font-size: 13px; }
+
+  footer { background: #1A1A2E; border-top: 1px solid rgba(255,215,0,0.13); margin-top: 4rem; padding: 2rem 1.5rem; }
+  .foot-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+  .foot-bottom { max-width: 1200px; margin: 1.5rem auto 0; border-top: 1px solid rgba(255,215,0,0.07); padding-top: 1rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .foot-bottom p { color: #444; font-size: 12px; }
+  .hidden { display: none; }
+
+  /* Article modal */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 100; padding: 1.5rem; overflow-y: auto; }
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+  .modal-card { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.2); border-radius: 14px; max-width: 680px; width: 100%; margin: auto; padding: 2rem; position: relative; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: #0F0F1A; border: 1px solid #333; color: #FFD700; width: 34px; height: 34px; border-radius: 8px; font-size: 18px; cursor: pointer; line-height: 1; }
+  .modal-card h2 { font-family: 'Bebas Neue',cursive; font-size: 30px; color: #F0F0F0; letter-spacing: 1px; margin: 12px 0 16px; line-height: 1.1; }
+  .modal-card .modal-body p { color: #C8C8D8; font-size: 15px; line-height: 1.7; margin-bottom: 14px; }
+  .modal-card .modal-body strong { color: #FFD700; }
+
+  /* Account / auth */
+  #account-area { display: flex; align-items: center; gap: 10px; }
+  .acct-name { color: #FFD700; font-weight: 600; font-size: 13px; }
+  .premium-badge { background: linear-gradient(135deg,#FFD700,#C8883A); color: #0F0F1A; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; letter-spacing: 1px; }
+  .btn-ghost { background: none; border: 1px solid rgba(255,215,0,0.33); color: #FFD700; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .auth-form { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+  .auth-form input { padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,215,0,0.33); background: #0F0F1A; color: #F0F0F0; font-size: 15px; outline: none; }
+  .auth-form button { background: #FFD700; color: #0F0F1A; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .auth-switch { color: #888; font-size: 13px; text-align: center; margin-top: 14px; }
+  .auth-switch a { color: #FFD700; cursor: pointer; font-weight: 600; }
+  .auth-msg { font-size: 13px; text-align: center; margin-top: 6px; min-height: 18px; }
+  .auth-tabs { display: flex; gap: 8px; margin-bottom: 4px; }
+  .auth-tabs button { flex: 1; background: #0F0F1A; border: 1px solid #333; color: #888; padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+  .auth-tabs button.active { border-color: #FFD700; color: #FFD700; }
+
+  /* Pricing */
+  .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; }
+  .plan { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 14px; padding: 1.75rem; display: flex; flex-direction: column; }
+  .plan.featured { border-color: #FFD700; box-shadow: 0 0 0 1px rgba(255,215,0,0.4), 0 8px 30px rgba(255,215,0,0.08); }
+  .plan .pname { font-family: 'Bebas Neue',cursive; font-size: 24px; letter-spacing: 1px; color: #F0F0F0; }
+  .plan .price { font-family: 'Bebas Neue',cursive; font-size: 44px; color: #FFD700; line-height: 1; margin: 8px 0; }
+  .plan .price span { font-size: 15px; color: #888; }
+  .plan ul { list-style: none; margin: 16px 0; flex: 1; }
+  .plan li { color: #B0B0C0; font-size: 14px; padding: 6px 0; padding-left: 24px; position: relative; }
+  .plan li::before { content: '✓'; color: #4CAF50; position: absolute; left: 0; font-weight: 700; }
+  .plan li.no { color: #555; }
+  .plan li.no::before { content: '✕'; color: #555; }
+  .plan button { border: none; padding: 13px; border-radius: 8px; font-weight: 700; font-size: 15px; cursor: pointer; }
+  .plan .buy { background: #FFD700; color: #0F0F1A; }
+  .plan .current { background: #0F0F1A; color: #4CAF50; border: 1px solid rgba(76,175,80,0.4); cursor: default; }
+
+  /* Leaderboard */
+  .lb-row { display: flex; align-items: center; gap: 14px; background: #1A1A2E; border: 1px solid rgba(255,215,0,0.1); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; }
+  .lb-rank { font-family: 'Bebas Neue',cursive; font-size: 22px; width: 36px; color: #666; }
+  .lb-row.top .lb-rank { color: #FFD700; }
+  .lb-name { flex: 1; font-weight: 600; color: #F0F0F0; }
+  .lb-pts { color: #FFD700; font-weight: 700; }
+  .lb-pts span { color: #666; font-size: 12px; font-weight: 400; }
+
+  /* Dashboard */
+  #dashboard { display: none; }
+  .dash-card { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; }
+  .dash-stat { display: inline-block; margin-right: 2rem; }
+  .dash-stat .v { font-family: 'Bebas Neue',cursive; font-size: 32px; color: #FFD700; line-height: 1; }
+  .dash-stat .k { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .my-pred { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,215,0,0.08); padding: 10px 0; font-size: 14px; color: #C8C8D8; }
+  .my-pred .sc { color: #FFD700; font-weight: 700; }
+
+  /* Share buttons */
+  .share-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+  .share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; color: #fff; }
+  .share-x { background: #000; border: 1px solid #333; }
+  .share-wa { background: #25D366; color: #0F0F1A; }
+  .share-cp { background: rgba(255,215,0,0.13); color: #FFD700; border: 1px solid rgba(255,215,0,0.27); }
+
+  /* Fan shop (Amazon) */
+  .shop-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 16px; }
+  .shop-card { background: #1A1A2E; border: 1px solid rgba(255,215,0,0.13); border-radius: 12px; padding: 1.5rem; text-align: center; transition: border-color .2s, transform .2s; display: block; }
+  .shop-card:hover { border-color: #FFD700; transform: translateY(-3px); }
+  .shop-card .se { font-size: 40px; }
+  .shop-card .sn { color: #F0F0F0; font-weight: 700; font-size: 15px; margin: 10px 0 4px; }
+  .shop-card .sd { color: #888; font-size: 12px; line-height: 1.5; min-height: 36px; }
+  .shop-card .sb { display: inline-block; margin-top: 12px; background: rgba(255,215,0,0.13); color: #FFD700; border: 1px solid rgba(255,215,0,0.27); padding: 7px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+
+  /* VPN / watch-anywhere banner */
+  .vpn-banner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; background: linear-gradient(135deg,#1A1A2E,#13233A); border: 1px solid rgba(79,195,247,0.27); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1.5rem; }
+  .vpn-banner .vt { color: #F0F0F0; font-weight: 700; font-size: 16px; }
+  .vpn-banner .vp { color: #B0B0C0; font-size: 13px; margin-top: 2px; }
+  .vpn-banner a { background: #4FC3F7; color: #0F0F1A; padding: 11px 22px; border-radius: 8px; font-weight: 700; font-size: 14px; white-space: nowrap; }
+
+  /* Football atmosphere */
+  body { background-color: #0F0F1A; background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.013) 0 46px, transparent 46px 92px); }
+  .hero { position: relative; }
+  .hero-pitch { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  .hero > div { position: relative; z-index: 2; }
+  .team-card { cursor: pointer; position: relative; overflow: hidden; }
+  .team-card::after { content: 'View'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(15,15,26,0.82); color: #FFD700; font-weight: 700; font-size: 13px; letter-spacing: 1px; opacity: 0; transition: opacity .2s ease; }
+  .team-card:hover::after { opacity: 1; }
+  .teams-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem; }
+  /* Team modal */
+  .tm-flag { width: 96px; height: 72px; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.5); display: block; margin: 6px auto 0; }
+  .tm-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .tm-actions a { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; cursor: pointer; min-width: 130px; }
+  .tm-primary { background: #FFD700; color: #0F0F1A; }
+  .tm-ghost { background: rgba(255,215,0,0.12); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" style="display:flex;align-items:center;gap:8px;">
+      <span class="bebas" style="font-size:28px;color:#FFD700;">MATCHDAY</span>
+      <span class="bebas" style="font-size:28px;color:#F0F0F0;">2026</span>
+      <span style="background:#E63946;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;">LIVE</span>
+    </a>
+    <button id="menu-toggle" aria-label="Menu" style="display:none;background:none;border:none;color:#FFD700;font-size:26px;cursor:pointer;line-height:1;">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#scores">Scores</a>
+      <a href="#predict">Predict</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#analysis">Analysis</a>
+      <a href="#shop">Shop</a>
+      <a href="#pricing">Premium</a>
+      <a href="#travel">Travel</a>
+      <div id="account-area"></div>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <svg class="hero-pitch" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="flood" cx="50%" cy="0%" r="65%">
+          <stop offset="0%" stop-color="#FFD700" stop-opacity="0.13"/>
+          <stop offset="100%" stop-color="#FFD700" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="crowd" width="15" height="15" patternUnits="userSpaceOnUse">
+          <circle cx="4" cy="4" r="1.7" fill="#ffffff" fill-opacity="0.05"/>
+        </pattern>
+      </defs>
+      <!-- floodlight glows -->
+      <ellipse cx="160" cy="30" rx="280" ry="340" fill="url(#flood)"/>
+      <ellipse cx="1040" cy="30" rx="280" ry="340" fill="url(#flood)"/>
+      <!-- floodlight pylons -->
+      <g stroke="#ffffff" stroke-opacity="0.07" stroke-width="3">
+        <line x1="160" y1="40" x2="160" y2="210"/>
+        <line x1="1040" y1="40" x2="1040" y2="210"/>
+      </g>
+      <g fill="#FFD700" fill-opacity="0.12">
+        <rect x="118" y="18" width="84" height="26" rx="4"/>
+        <rect x="998" y="18" width="84" height="26" rx="4"/>
+      </g>
+      <!-- crowd stands -->
+      <rect x="0" y="120" width="1200" height="150" fill="url(#crowd)"/>
+      <!-- pitch lines -->
+      <g stroke="#FFD700" stroke-opacity="0.08" stroke-width="2" fill="none">
+        <line x1="0" y1="480" x2="1200" y2="480"/>
+        <ellipse cx="600" cy="480" rx="125" ry="36"/>
+        <ellipse cx="600" cy="600" rx="560" ry="120"/>
+        <path d="M250 480 q350 -150 700 0"/>
+      </g>
+      <!-- soccer ball -->
+      <g transform="translate(600 480)" opacity="0.6">
+        <circle r="32" fill="#0F0F1A" fill-opacity="0.5" stroke="#FFD700" stroke-opacity="0.3" stroke-width="2"/>
+        <polygon points="0,-11 10,-4 6,8 -6,8 -10,-4" fill="#FFD700" fill-opacity="0.16" stroke="#FFD700" stroke-opacity="0.32" stroke-width="1.4"/>
+        <g stroke="#FFD700" stroke-opacity="0.24" stroke-width="1.4">
+          <line x1="0" y1="-11" x2="0" y2="-32"/>
+          <line x1="10" y1="-4" x2="28" y2="-15"/>
+          <line x1="6" y1="8" x2="18" y2="26"/>
+          <line x1="-6" y1="8" x2="-18" y2="26"/>
+          <line x1="-10" y1="-4" x2="-28" y2="-15"/>
+        </g>
+      </g>
+    </svg>
+    <div style="max-width:800px;margin:0 auto;position:relative;">
+      <div class="badge-red">JUNE 11 – JULY 19, 2026</div>
+      <h1 class="bebas">THE WORLD'S<br /><span style="color:#FFD700;">BIGGEST STAGE</span></h1>
+      <p style="color:#B0B0C0;font-size:18px;max-width:500px;margin:0 auto 2rem;line-height:1.6;">48 teams. 104 matches. One trophy. Live scores, predictions, and everything World Cup 2026.</p>
+      <div class="countdown">
+        <div class="stat"><div class="num" id="days">—</div><div class="lbl">Days</div></div>
+        <div class="stat"><div class="num">48</div><div class="lbl">Teams</div></div>
+        <div class="stat"><div class="num">104</div><div class="lbl">Matches</div></div>
+        <div class="stat"><div class="num">16</div><div class="lbl">Stadiums</div></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#predict" class="btn-fill">🏆 Make Predictions</a>
+        <a href="#analysis" class="btn-outline">🤖 AI Analysis</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- DASHBOARD (logged-in only) -->
+    <section class="block" id="dashboard">
+      <h2 class="sec">YOUR DASHBOARD</h2>
+      <div class="dash-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
+          <div>
+            <div style="font-size:18px;font-weight:700;color:#F0F0F0;margin-bottom:4px;" id="dash-greeting">Welcome back</div>
+            <div id="dash-plan" style="color:#888;font-size:13px;"></div>
+          </div>
+          <div>
+            <div class="dash-stat"><div class="v" id="dash-pred-count">0</div><div class="k">Predictions</div></div>
+            <div class="dash-stat"><div class="v" id="dash-points">0</div><div class="k">Points</div></div>
+          </div>
+        </div>
+        <div id="dash-predictions" style="margin-top:18px;"></div>
+        <div class="share-row" id="dash-share"></div>
+      </div>
+    </section>
+
+    <!-- SCORES -->
+    <section class="block" id="scores">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;">
+        <h2 class="sec" style="margin:0;">MATCH CENTER</h2>
+        <div id="live-indicator"></div>
+      </div>
+      <div id="matches" class="fixtures"></div>
+      <div id="vpn-slot"></div>
+    </section>
+
+    <!-- TEAMS -->
+    <section class="block" id="teams">
+      <h2 class="sec">FEATURED TEAMS</h2>
+      <div class="teams-grid" id="teams-grid"></div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="block">
+      <div class="features" id="features"></div>
+    </section>
+
+    <!-- PREDICT -->
+    <section class="block" id="predict">
+      <h2 class="sec">BRACKET PREDICTOR</h2>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Predict match results and climb the global leaderboard. Free to play!</p>
+      <div style="background:linear-gradient(135deg,#1A1A2E,#2A1A3E);border:1px solid rgba(255,215,0,0.33);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div class="bebas" style="color:#FFD700;font-size:24px;">🏆 GO PREMIUM</div>
+          <p style="color:#B0B0C0;font-size:14px;">Full bracket + AI predictions + Advanced stats</p>
+        </div>
+        <div style="text-align:right;">
+          <div class="bebas" style="font-size:32px;color:#FFD700;">$4.99<span style="font-size:16px;color:#888;">/month</span></div>
+          <button id="upgrade-btn" class="btn-fill" style="margin-top:8px;border:none;cursor:pointer;">Upgrade Now</button>
+        </div>
+      </div>
+      <div id="predict-matches"></div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section class="block" id="leaderboard">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px;">
+        <h2 class="sec" style="margin:0;">🏆 GLOBAL LEADERBOARD</h2>
+        <span style="color:#666;font-size:13px;">Updated live · Top 10</span>
+      </div>
+      <div id="leaderboard-list"></div>
+    </section>
+
+    <!-- ANALYSIS -->
+    <section class="block" id="analysis">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <h2 class="sec" style="margin:0;">AI MATCH ANALYSIS</h2>
+        <span style="background:rgba(79,195,247,0.13);color:#4FC3F7;border:1px solid rgba(79,195,247,0.27);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;">Powered by AI</span>
+      </div>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">In-depth match previews and predictions, fresh every day.</p>
+      <div id="articles"></div>
+    </section>
+
+    <!-- ODDS -->
+    <section class="block" id="odds">
+      <h2 class="sec">BETTING ODDS</h2>
+      <p style="color:#B0B0C0;margin-bottom:6px;">Compare odds from top bookmakers. Best value in green.</p>
+      <p style="color:#E63946;font-size:12px;margin-bottom:1.5rem;">⚠️ 18+ only. Please gamble responsibly. Entertainment purposes.</p>
+      <div id="odds-tables"></div>
+    </section>
+
+    <!-- TRAVEL -->
+    <section class="block" id="travel">
+      <h2 class="sec">FAN TRAVEL GUIDE</h2>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">16 stadiums across 3 countries. How to get there and where to stay.</p>
+      <div class="venues" id="venues"></div>
+    </section>
+
+    <!-- FAN SHOP (Amazon affiliate) -->
+    <section class="block" id="shop">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px;">
+        <h2 class="sec" style="margin:0;">🛒 FAN SHOP</h2>
+        <span style="color:#666;font-size:13px;">Jerseys, gear &amp; matchday essentials</span>
+      </div>
+      <div class="shop-grid" id="gear-grid"></div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="block" id="pricing">
+      <h2 class="sec">GO PREMIUM</h2>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Unlock the full bracket, AI predictions, and advanced stats. Cancel anytime.</p>
+      <div class="plans">
+        <div class="plan">
+          <div class="pname">FREE</div>
+          <div class="price">$0</div>
+          <ul>
+            <li>Live scores &amp; fixtures</li>
+            <li>Predict group-stage matches</li>
+            <li>Global leaderboard</li>
+            <li class="no">Full knockout bracket</li>
+            <li class="no">AI match predictions</li>
+            <li class="no">Advanced team stats</li>
+          </ul>
+          <button class="current" id="plan-free-btn">Sign up free</button>
+        </div>
+        <div class="plan featured">
+          <div class="pname">PREMIUM <span class="premium-badge">POPULAR</span></div>
+          <div class="price">$4.99<span>/month</span></div>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Full knockout bracket predictor</li>
+            <li>AI predictions on every match</li>
+            <li>Advanced team &amp; player stats</li>
+            <li>Ad-free experience</li>
+            <li>Premium badge on the leaderboard</li>
+          </ul>
+          <button class="buy" onclick="buyPlan('monthly')">Upgrade Now</button>
+        </div>
+        <div class="plan">
+          <div class="pname">SEASON PASS</div>
+          <div class="price">$24.99<span>/once</span></div>
+          <ul>
+            <li>Everything in Premium</li>
+            <li>One payment, whole tournament</li>
+            <li>Save 17% vs monthly</li>
+            <li>Final &amp; knockout deep-dives</li>
+            <li>Priority new features</li>
+          </ul>
+          <button class="buy" onclick="buyPlan('season')">Get Season Pass</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+      <div style="font-size:40px;margin-bottom:8px;">⚽</div>
+      <h2>THE DAILY KICK</h2>
+      <p>Match previews, AI predictions, and World Cup news every morning. Free bracket PDF on signup!</p>
+      <div class="nl-form" id="nl-form">
+        <input type="email" id="nl-email" placeholder="your@email.com" />
+        <button onclick="subscribe()">Get Free Bracket</button>
+      </div>
+      <p id="nl-success" class="hidden" style="color:#4CAF50;font-weight:600;font-size:18px;">🎉 You're in! Check your email for your free bracket.</p>
+    </section>
+
+    <div class="ad">Advertisement — Google AdSense (728×90)</div>
+  </div>
+</main>
+
+<!-- Article Modal -->
+<div class="modal-overlay" id="article-modal" onclick="if(event.target===this)closeArticle()">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeArticle()" aria-label="Close">✕</button>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span class="tag" id="modal-tag"></span>
+      <span style="color:#666;font-size:12px;" id="modal-meta"></span>
+      <span style="background:rgba(79,195,247,0.13);color:#4FC3F7;border:1px solid rgba(79,195,247,0.27);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;">AI Generated</span>
+    </div>
+    <h2 id="modal-title"></h2>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Auth Modal -->
+<div class="modal-overlay" id="auth-modal" onclick="if(event.target===this)closeAuth()">
+  <div class="modal-card" style="max-width:420px;">
+    <button class="modal-close" onclick="closeAuth()" aria-label="Close">✕</button>
+    <div class="bebas" style="font-size:30px;color:#FFD700;letter-spacing:1px;">MATCHDAY 2026</div>
+    <p id="auth-subtitle" style="color:#888;font-size:14px;margin:4px 0 18px;">Create your free account</p>
+    <div class="auth-tabs">
+      <button id="tab-signup" class="active" onclick="setAuthMode('signup')">Sign up</button>
+      <button id="tab-login" onclick="setAuthMode('login')">Log in</button>
+    </div>
+    <form class="auth-form" id="auth-form" onsubmit="return submitAuth(event)">
+      <input type="text" id="auth-name" placeholder="Display name" autocomplete="nickname" />
+      <input type="email" id="auth-email" placeholder="your@email.com" autocomplete="email" required />
+      <input type="password" id="auth-password" placeholder="Password (min 6 characters)" autocomplete="current-password" minlength="6" required />
+      <button type="submit" id="auth-submit">Create account</button>
+      <div class="auth-msg" id="auth-msg"></div>
+    </form>
+    <p class="auth-switch" id="auth-switch"></p>
+  </div>
+</div>
+
+<!-- Team Modal -->
+<div class="modal-overlay" id="team-modal" onclick="if(event.target===this)closeTeam()">
+  <div class="modal-card" style="max-width:420px;text-align:center;">
+    <button class="modal-close" onclick="closeTeam()" aria-label="Close">✕</button>
+    <img id="tm-flag" class="tm-flag" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="96" height="72" />
+    <h2 id="tm-name" style="text-align:center;margin:14px 0 4px;"></h2>
+    <p id="tm-sub" style="color:#888;font-size:14px;"></p>
+    <div class="tm-actions">
+      <a class="tm-primary" onclick="closeTeam();document.getElementById('predict').scrollIntoView();">🏆 Predict their match</a>
+      <a class="tm-ghost" onclick="closeTeam();document.getElementById('scores').scrollIntoView();">View fixtures</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <span class="bebas" style="font-size:24px;color:#FFD700;">MATCHDAY 2026</span>
+      <p style="color:#666;font-size:13px;margin-top:8px;max-width:280px;">Your ultimate FIFA World Cup 2026 hub. Live scores, AI predictions, and more.</p>
+    </div>
+    <div style="display:flex;gap:3rem;flex-wrap:wrap;">
+      <div>
+        <p style="color:#FFD700;font-weight:600;font-size:13px;margin-bottom:12px;">Site</p>
+        <a href="#scores" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Live Scores</a>
+        <a href="#predict" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Predictions</a>
+        <a href="#teams" style="display:block;color:#666;font-size:13px;">Teams</a>
+      </div>
+      <div>
+        <p style="color:#FFD700;font-weight:600;font-size:13px;margin-bottom:12px;">More</p>
+        <a href="#analysis" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Analysis</a>
+        <a href="#odds" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Betting Odds</a>
+        <a href="#travel" style="display:block;color:#666;font-size:13px;">Travel Guide</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 MatchDay2026.net — Not affiliated with FIFA.</p>
+    <p>Betting content for entertainment only. 18+ only. Gamble responsibly.</p>
+  </div>
+  <div style="max-width:1200px;margin:1rem auto 0;">
+    <p style="color:#444;font-size:11px;line-height:1.6;">As an Amazon Associate and an affiliate partner of travel, ticketing, VPN and sportsbook brands, MatchDay 2026 may earn a commission from qualifying purchases and sign-ups made through links on this site — at no extra cost to you.</p>
+  </div>
+</footer>
+
+<!-- Supabase JS library (CDN — no build step). Must load before our script. -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // ---- Supabase config -------------------------------------------------
+  // The publishable key is SAFE to ship in client-side code. Never put the
+  // secret key (sb_secret_...) here — it would let anyone read your data.
+  var SUPABASE_URL = 'https://qukmdzrjkvqnjgfpexxz.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_16t-FyMIZgXd0Ekrh4E2LQ_S350qtfa';
+
+  // ---- Stripe Payment Links (create these in your Stripe dashboard) -----
+  // Dashboard -> Payment Links -> New. Paste the resulting URLs here.
+  var STRIPE_LINKS = {
+    monthly: 'https://buy.stripe.com/dRmeVe5rN7Qaa8KeLgbbG00',   // $4.99 / month
+    season:  'https://buy.stripe.com/00weVe1bx7QadkWgTobbG01'     // one-time season pass
+  };
+
+  // ---- Affiliate links (your money) ------------------------------------
+  // As each program approves you, paste your tracked URL / ID here ONCE and
+  // every button on the page updates. Until then, plain links still work.
+  var AFFILIATES = {
+    // Betting: replace each homepage with your approved affiliate tracking URL.
+    bookies: {
+      'Bet365':     'https://www.bet365.com',
+      'DraftKings': 'https://sportsbook.draftkings.com',
+      'BetMGM':     'https://sports.betmgm.com'
+    },
+    // Travel: paste just your partner IDs; leave blank to use plain search links.
+    bookingAid:           '',   // Booking.com affiliate id  (becomes &aid=...)
+    getYourGuidePartner:  '',   // GetYourGuide partner id   (becomes &partner_id=...)
+    // (Airbnb has no open affiliate program, so those stay as plain search links.)
+
+    // Amazon Associates: your tracking tag, e.g. 'matchday2026-20' (becomes &tag=...)
+    amazonTag:            'matchday20205-20',
+    // Match tickets: a resale partner search link. Blank = plain SeatGeek search.
+    ticketsBase:          '',   // e.g. your SeatGeek/StubHub affiliate search URL
+    // VPN affiliate (high payout — fans abroad who can't stream in their country):
+    vpnUrl:               '',   // your VPN affiliate link (NordVPN / ExpressVPN / Surfshark)
+    vpnName:              'NordVPN'
+  };
+
+  // Google AdSense: paste your IDs once approved. Blank = shows a placeholder.
+  var ADSENSE_CLIENT = '';      // e.g. 'ca-pub-1234567890123456'
+  var ADSENSE_SLOT   = '';      // the ad unit id
+
+  // Build a travel search URL with your affiliate ID attached when present.
+  function travelUrl(provider, q) {
+    if (provider === 'booking') {
+      return 'https://www.booking.com/searchresults.html?ss=' + q +
+        (AFFILIATES.bookingAid ? '&aid=' + encodeURIComponent(AFFILIATES.bookingAid) : '');
+    }
+    if (provider === 'airbnb') {
+      return 'https://www.airbnb.com/s/' + q;
+    }
+    return 'https://www.getyourguide.com/s/?q=' + q +
+      (AFFILIATES.getYourGuidePartner ? '&partner_id=' + encodeURIComponent(AFFILIATES.getYourGuidePartner) : '');
+  }
+
+  // Amazon search URL with your Associates tag attached when present.
+  function amazonUrl(query) {
+    return 'https://www.amazon.com/s?k=' + encodeURIComponent(query) +
+      (AFFILIATES.amazonTag ? '&tag=' + encodeURIComponent(AFFILIATES.amazonTag) : '');
+  }
+
+  // Tickets search URL (your affiliate base if set, else a plain SeatGeek search).
+  function ticketsUrl(query) {
+    if (AFFILIATES.ticketsBase) {
+      return AFFILIATES.ticketsBase + (AFFILIATES.ticketsBase.indexOf('?')===-1?'?':'&') + 'q=' + encodeURIComponent(query);
+    }
+    return 'https://seatgeek.com/search?q=' + encodeURIComponent(query);
+  }
+
+  // ---- Live scores (optional) ------------------------------------------
+  // Leave blank to show the scheduled matches. To go truly live during the
+  // tournament, add a sports-data API (see notes from Claude).
+  var SPORTS_API_KEY = '';
+  // ----------------------------------------------------------------------
+
+  // The Supabase client (global `supabase` comes from the CDN script above).
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Countdown
+  var kickoff = new Date('2026-06-11').getTime();
+  var days = Math.ceil((kickoff - Date.now()) / 86400000);
+  document.getElementById('days').textContent = days > 0 ? days : 0;
+
+  function flag(code, w, h) { return 'https://flagcdn.com/' + w + 'x' + h + '/' + code + '.png'; }
+
+  // status: 'UPCOMING' | 'LIVE' | 'FT'. hs/as = scores, min = live minute (e.g. "67'").
+  // These start as scheduled fixtures; refreshLiveScores() fills in real LIVE/FT data
+  // from the sports API once a key is added (status/scores update automatically).
+  var MATCHES = [
+    { home:'Mexico', away:'South Africa', hf:'mx', af:'za', date:'Jun 11', time:'3:00 PM ET', stadium:'Estadio Azteca', g:'A', status:'UPCOMING', hs:null, as:null, min:'' },
+    { home:'Canada', away:'Bosnia', hf:'ca', af:'ba', date:'Jun 12', time:'6:00 PM ET', stadium:'BMO Field, Toronto', g:'B', status:'UPCOMING', hs:null, as:null, min:'' },
+    { home:'USA', away:'Paraguay', hf:'us', af:'py', date:'Jun 12', time:'9:00 PM ET', stadium:'SoFi Stadium', g:'C', status:'UPCOMING', hs:null, as:null, min:'' },
+    { home:'Brazil', away:'Germany', hf:'br', af:'de', date:'Jun 13', time:'3:00 PM ET', stadium:'MetLife Stadium', g:'D', status:'UPCOMING', hs:null, as:null, min:'' },
+    { home:'France', away:'Argentina', hf:'fr', af:'ar', date:'Jun 13', time:'6:00 PM ET', stadium:'Rose Bowl', g:'E', status:'UPCOMING', hs:null, as:null, min:'' },
+    { home:'England', away:'Spain', hf:'gb-eng', af:'es', date:'Jun 14', time:'3:00 PM ET', stadium:'AT&T Stadium', g:'F', status:'UPCOMING', hs:null, as:null, min:'' }
+  ];
+
+  function pinIcon() { return '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></svg>'; }
+
+  // Team badge: real crest URL from the live API, else a flag from the code.
+  function teamImg(crest, code, name) {
+    if (crest) return '<img loading="lazy" decoding="async" src="' + crest + '" width="26" height="26" alt="' + name + '" style="width:26px;height:26px;object-fit:contain;border-radius:3px;"/>';
+    return '<img loading="lazy" decoding="async" src="' + flag(code,28,21) + '" width="28" height="21" alt="' + name + '"/>';
+  }
+  function renderMatches() {
+    var liveCount = 0;
+    document.getElementById('matches').innerHTML = MATCHES.map(function(m){
+      var statusHtml, middle, liveClass = '';
+      if (m.status === 'LIVE') {
+        liveCount++; liveClass = ' is-live';
+        statusHtml = '<span class="mstatus live"><span class="livedot"></span>LIVE' + (m.min ? '&nbsp;' + m.min : '') + '</span>';
+        middle = '<div class="fx-score">' + (m.hs==null?0:m.hs) + '<span class="sep">:</span>' + (m.as==null?0:m.as) + '</div>';
+      } else if (m.status === 'FT') {
+        statusHtml = '<span class="mstatus ft">FULL-TIME</span>';
+        middle = '<div class="fx-score">' + (m.hs==null?0:m.hs) + '<span class="sep">:</span>' + (m.as==null?0:m.as) + '</div>';
+      } else {
+        statusHtml = '<span class="mstatus upc">' + m.date + ' · ' + m.time + '</span>';
+        middle = '<div class="fx-vs">VS</div>';
+      }
+      var chip = m.label ? m.label : ('Group ' + (m.g || ''));
+      var place = m.stadium || m.venue || 'FIFA World Cup 2026';
+      return '<div class="fixture' + liveClass + '">' +
+        '<div class="fx-top"><span class="fx-group">' + chip + '</span>' + statusHtml + '</div>' +
+        '<div class="fx-main">' +
+          '<div class="fx-team home">' + teamImg(m.crestHome, m.hf, m.home) + '<span class="tn">' + m.home + '</span></div>' +
+          middle +
+          '<div class="fx-team away">' + teamImg(m.crestAway, m.af, m.away) + '<span class="tn">' + m.away + '</span></div>' +
+        '</div>' +
+        '<div class="fx-bottom"><span class="fx-stadium">' + pinIcon() + '<span>' + place + '</span></span>' +
+        '<a href="#predict" class="fx-predict">Predict →</a></div>' +
+      '</div>';
+    }).join('');
+    var ind = document.getElementById('live-indicator');
+    if (ind) ind.innerHTML = liveCount > 0
+      ? '<span class="live-pill"><span class="livedot"></span>' + liveCount + ' LIVE NOW</span>'
+      : '<span style="color:#666;font-size:13px;">Scores update live during matches</span>';
+  }
+  renderMatches();
+
+  // All 48 nations of the 2026 World Cup, grouped A–L.
+  var TEAMS = [
+    {name:'Mexico',f:'mx',g:'A'},{name:'South Africa',f:'za',g:'A'},{name:'Croatia',f:'hr',g:'A'},{name:'Uzbekistan',f:'uz',g:'A'},
+    {name:'Canada',f:'ca',g:'B'},{name:'Bosnia',f:'ba',g:'B'},{name:'Belgium',f:'be',g:'B'},{name:'South Korea',f:'kr',g:'B'},
+    {name:'USA',f:'us',g:'C'},{name:'Paraguay',f:'py',g:'C'},{name:'Switzerland',f:'ch',g:'C'},{name:'Ghana',f:'gh',g:'C'},
+    {name:'Brazil',f:'br',g:'D'},{name:'Germany',f:'de',g:'D'},{name:'Australia',f:'au',g:'D'},{name:'Nigeria',f:'ng',g:'D'},
+    {name:'France',f:'fr',g:'E'},{name:'Argentina',f:'ar',g:'E'},{name:'Senegal',f:'sn',g:'E'},{name:'Norway',f:'no',g:'E'},
+    {name:'England',f:'gb-eng',g:'F'},{name:'Spain',f:'es',g:'F'},{name:'Japan',f:'jp',g:'F'},{name:'Egypt',f:'eg',g:'F'},
+    {name:'Portugal',f:'pt',g:'G'},{name:'Uruguay',f:'uy',g:'G'},{name:'Ivory Coast',f:'ci',g:'G'},{name:'Qatar',f:'qa',g:'G'},
+    {name:'Netherlands',f:'nl',g:'H'},{name:'Colombia',f:'co',g:'H'},{name:'Cameroon',f:'cm',g:'H'},{name:'Saudi Arabia',f:'sa',g:'H'},
+    {name:'Italy',f:'it',g:'I'},{name:'Denmark',f:'dk',g:'I'},{name:'Morocco',f:'ma',g:'I'},{name:'Panama',f:'pa',g:'I'},
+    {name:'Poland',f:'pl',g:'J'},{name:'Ecuador',f:'ec',g:'J'},{name:'Tunisia',f:'tn',g:'J'},{name:'New Zealand',f:'nz',g:'J'},
+    {name:'Serbia',f:'rs',g:'K'},{name:'Peru',f:'pe',g:'K'},{name:'Algeria',f:'dz',g:'K'},{name:'Costa Rica',f:'cr',g:'K'},
+    {name:'Austria',f:'at',g:'L'},{name:'Chile',f:'cl',g:'L'},{name:'Iran',f:'ir',g:'L'},{name:'Jamaica',f:'jm',g:'L'}
+  ];
+  document.getElementById('teams-grid').innerHTML = TEAMS.map(function(t, i){
+    return '<div class="team-card" onclick="openTeam('+i+')"><img loading="lazy" decoding="async" src="'+flag(t.f,48,36)+'" width="48" height="36" alt="'+t.name+'"/>' +
+      '<div class="nm">'+t.name+'</div><div class="gp">Group '+t.g+'</div></div>';
+  }).join('');
+
+  function openTeam(i) {
+    var t = TEAMS[i];
+    document.getElementById('tm-flag').src = flag(t.f, 96, 72);
+    document.getElementById('tm-flag').alt = t.name;
+    document.getElementById('tm-name').textContent = t.name;
+    document.getElementById('tm-sub').textContent = 'Group ' + t.g + ' · FIFA World Cup 2026';
+    document.getElementById('team-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeTeam() {
+    document.getElementById('team-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  var FEATURES = [
+    {ic:'🏆',title:'Bracket Predictor',desc:'Predict every match and compete on our global leaderboard. Free to play!',cta:'Start Predicting →',color:'#FFD700',href:'#predict'},
+    {ic:'🤖',title:'AI Match Analysis',desc:'AI generates in-depth match previews and predictions for every game.',cta:'Read Analysis →',color:'#4FC3F7',href:'#analysis'},
+    {ic:'📊',title:'Odds Comparison',desc:'Compare betting odds from top bookmakers and find the best value.',cta:'View Odds →',color:'#81C784',href:'#odds'},
+    {ic:'✈️',title:'Fan Travel Guide',desc:'Hotels, flights, and tips for all 16 World Cup stadiums across North America.',cta:'Plan Trip →',color:'#FF8A65',href:'#travel'}
+  ];
+  document.getElementById('features').innerHTML = FEATURES.map(function(c){
+    return '<a href="'+c.href+'" class="feature" style="display:block;"><div class="ic">'+c.ic+'</div>' +
+      '<h3 style="color:'+c.color+';">'+c.title+'</h3><p>'+c.desc+'</p>' +
+      '<span class="cta" style="color:'+c.color+';">'+c.cta+'</span></a>';
+  }).join('');
+
+  document.getElementById('predict-matches').innerHTML = MATCHES.slice(0,3).map(function(m){
+    return '<div class="match" data-label="'+m.home+' vs '+m.away+'" style="justify-content:center;gap:16px;">' +
+      '<div class="teams"><img loading="lazy" decoding="async" src="'+flag(m.hf,32,24)+'" width="32" height="24"/><span style="font-weight:600;">'+m.home+'</span></div>' +
+      '<input type="number" min="0" max="20" placeholder="0" class="pred-home" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
+      '<span style="color:#666;">–</span>' +
+      '<input type="number" min="0" max="20" placeholder="0" class="pred-away" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
+      '<div class="teams"><span style="font-weight:600;">'+m.away+'</span><img loading="lazy" decoding="async" src="'+flag(m.af,32,24)+'" width="32" height="24"/></div></div>';
+  }).join('') + '<button id="submit-predictions" class="btn-fill" style="width:100%;border:none;cursor:pointer;padding:14px;margin-top:8px;font-size:16px;">Submit Predictions</button>' +
+    '<p id="predict-success" class="hidden" style="text-align:center;color:#4CAF50;font-weight:600;margin-top:12px;">✅ Predictions saved! Good luck climbing the leaderboard.</p>';
+
+  var ARTICLES = [
+    {title:'Brazil vs Germany: The Clash of Titans',excerpt:'AI analysis of the most anticipated group stage clash. Can the German machine be stopped?',date:'Jun 13, 2026',read:'4 min',tag:'Match Preview',
+     body:'<p>The Group D opener between Brazil and Germany is the tie everyone circled the moment the draw was made. Two of the most decorated nations in World Cup history meet at MetLife Stadium, and our model gives Brazil a slight edge at 42% to win, with Germany at 34% and a draw at 24%.</p>' +
+          '<p>Brazil\'s attacking depth is the difference-maker. With pace on both flanks and a midfield that can control tempo, they generate high-quality chances at a rate few teams can match. Germany, meanwhile, rely on structure and set-piece efficiency — areas where they rank among the tournament\'s best.</p>' +
+          '<p>The key battle is in midfield. If Germany can slow the game and force Brazil into wide areas, they neutralize the Brazilian press. But if Brazil win the first 20 minutes, expect an early goal and an open game.</p>' +
+          '<p><strong>AI Prediction:</strong> Brazil 2–1 Germany. Expect goals, expect drama, and expect this one to set the tone for the entire group.</p>'},
+    {title:'Top 5 Dark Horses to Watch in 2026',excerpt:'Morocco, Japan, and three more teams that could shock the world this summer in North America.',date:'Jun 10, 2026',read:'5 min',tag:'Analysis',
+     body:'<p>Every World Cup has its surprise package. After Morocco\'s historic semifinal run in 2022, the idea of a "dark horse" reaching the latter stages no longer feels far-fetched. Here are five teams our model flags as overperformers waiting to happen.</p>' +
+          '<p><strong>1. Morocco</strong> — Proven on the biggest stage, with a disciplined defense and a counter-attack built for tournament football.</p>' +
+          '<p><strong>2. Japan</strong> — Technically excellent and tactically fearless. They beat Germany and Spain in 2022 and have only improved since.</p>' +
+          '<p><strong>3. Senegal</strong> — Pace, power, and a core of players competing at Europe\'s top clubs.</p>' +
+          '<p><strong>4. Croatia</strong> — Never count out a side that simply refuses to lose. Their midfield experience is unmatched.</p>' +
+          '<p><strong>5. USA</strong> — Home advantage, a young hungry squad, and 11 stadiums full of support. The conditions are set for a deep run.</p>'},
+    {title:"Will USA's Home Advantage Be Decisive?",excerpt:'Playing in front of massive home crowds across 11 US venues — our AI model says yes.',date:'Jun 9, 2026',read:'3 min',tag:'Prediction',
+     body:'<p>Host nations historically overperform, and the data backs it up: since 1990, hosts advance from the group stage over 80% of the time. For the USA in 2026, that edge could be even larger.</p>' +
+          '<p>With 11 of the 16 venues on US soil, the Americans will play in front of enormous, partisan crowds with minimal travel — a logistical advantage their opponents simply won\'t have. Reduced travel fatigue and familiar conditions consistently translate into measurable performance gains.</p>' +
+          '<p>Our model projects the USA to top their group and reach at least the quarterfinals, with a real chance of going further if the bracket opens up.</p>'},
+    {title:"Canada's Mission: Score Their First World Cup Goals",excerpt:'As hosts, Canada faces Bosnia in Toronto. Our AI predicts how they will perform on home soil.',date:'Jun 8, 2026',read:'4 min',tag:'Match Preview',
+     body:'<p>Canada arrive at their home World Cup with momentum and belief. After failing to score in 2022, the storyline writes itself: the first World Cup goal on home soil at a sold-out BMO Field in Toronto.</p>' +
+          '<p>Their opener against Bosnia is winnable. Canada\'s wing play and transition speed should create chances, and the emotional lift of a home crowd cannot be overstated for a young squad.</p>' +
+          '<p>The challenge is composure in the final third — converting pressure into goals. If they take their chances early, this could be the night Canadian football history is made.</p>' +
+          '<p><strong>AI Prediction:</strong> Canada 2–0 Bosnia, with the home crowd roaring them forward.</p>'}
+  ];
+  document.getElementById('articles').innerHTML = ARTICLES.map(function(a, idx){
+    return '<div class="article" onclick="openArticle('+idx+')"><div style="display:flex;gap:8px;margin-bottom:4px;align-items:center;">' +
+      '<span class="tag">'+a.tag+'</span><span style="color:#666;font-size:12px;">'+a.date+' · '+a.read+' read</span></div>' +
+      '<h3>'+a.title+'</h3><p>'+a.excerpt+'</p>' +
+      '<span style="color:#4FC3F7;font-size:13px;font-weight:600;">Read full analysis →</span></div>';
+  }).join('');
+
+  function openArticle(idx) {
+    var a = ARTICLES[idx];
+    document.getElementById('modal-tag').textContent = a.tag;
+    document.getElementById('modal-meta').textContent = a.date + ' · ' + a.read + ' read';
+    document.getElementById('modal-title').textContent = a.title;
+    document.getElementById('modal-body').innerHTML = a.body;
+    document.getElementById('article-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeArticle() {
+    document.getElementById('article-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  var ODDS = [
+    {home:'Mexico',away:'South Africa',hf:'mx',af:'za',date:'Jun 11',rows:[['Bet365','2.10','3.40','3.20'],['DraftKings','2.15','3.35','3.10'],['BetMGM','2.05','3.50','3.25']]},
+    {home:'Canada',away:'Bosnia',hf:'ca',af:'ba',date:'Jun 12',rows:[['Bet365','2.80','3.20','2.50'],['DraftKings','2.75','3.25','2.55'],['BetMGM','2.85','3.15','2.45']]}
+  ];
+  var BOOKIES = AFFILIATES.bookies; // edit URLs in the AFFILIATES config at the top
+  document.getElementById('odds-tables').innerHTML = ODDS.map(function(o){
+    var rows = o.rows.map(function(r,i){
+      var url = BOOKIES[r[0]] || '#';
+      return '<tr style="border-bottom:1px solid rgba(26,26,46,0.2);"><td style="font-weight:600;color:#F0F0F0;">'+r[0]+'</td>' +
+        '<td'+(i===0?' class="best"':'')+'>'+r[1]+'</td><td style="color:#F0F0F0;">'+r[2]+'</td><td style="color:#F0F0F0;">'+r[3]+'</td>' +
+        '<td><a href="'+url+'" target="_blank" rel="nofollow noopener" class="bet-link">Bet Now ↗</a></td></tr>';
+    }).join('');
+    return '<div style="background:#1A1A2E;border:1px solid rgba(255,215,0,0.13);border-radius:12px;padding:1.5rem;margin-bottom:20px;">' +
+      '<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">' +
+      '<img loading="lazy" decoding="async" src="'+flag(o.hf,32,24)+'" width="32" height="24"/><span style="font-weight:700;font-size:18px;">'+o.home+'</span>' +
+      '<span class="vs">VS</span><span style="font-weight:700;font-size:18px;">'+o.away+'</span>' +
+      '<img loading="lazy" decoding="async" src="'+flag(o.af,32,24)+'" width="32" height="24"/><span style="color:#666;font-size:13px;margin-left:8px;">'+o.date+'</span></div>' +
+      '<div style="overflow-x:auto;"><table><thead><tr><th>Bookmaker</th><th>'+o.home+' Win</th><th>Draw</th><th>'+o.away+' Win</th><th>Bet</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+  }).join('');
+
+  var VENUES = [
+    {city:'New York/NJ',stadium:'MetLife Stadium',country:'USA',f:'us',matches:8,tip:'Book via NJ Transit from Penn Station. Hotels in Hoboken are cheaper than Manhattan.'},
+    {city:'Los Angeles',stadium:'SoFi Stadium',country:'USA',f:'us',matches:7,tip:'Avoid renting a car. Uber/Lyft is best. Stay in El Segundo for value.'},
+    {city:'Dallas',stadium:'AT&T Stadium',country:'USA',f:'us',matches:7,tip:'Arlington is very hot in June. Bring sunscreen and hydrate before the match.'},
+    {city:'Mexico City',stadium:'Estadio Azteca',country:'Mexico',f:'mx',matches:5,tip:'Highest altitude stadium (2,240m). Arrive a day early to acclimatize.'},
+    {city:'Toronto',stadium:'BMO Field',country:'Canada',f:'ca',matches:6,tip:'Best food scene of all host cities. Stay near Union Station for easy transport.'},
+    {city:'Vancouver',stadium:'BC Place',country:'Canada',f:'ca',matches:6,tip:'Beautiful city. Book the Skytrain — it goes directly to the stadium.'}
+  ];
+  document.getElementById('venues').innerHTML = VENUES.map(function(v){
+    var q = encodeURIComponent(v.city);
+    return '<div class="venue"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">' +
+      '<div><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;"><img loading="lazy" decoding="async" src="'+flag(v.f,24,18)+'" width="24" height="18"/>' +
+      '<span style="color:#888;font-size:12px;">'+v.country+'</span></div><h3>'+v.city+'</h3>' +
+      '<p style="color:#B0B0C0;font-size:13px;">'+v.stadium+'</p></div>' +
+      '<div style="text-align:right;"><div style="color:#F0F0F0;font-weight:700;">'+v.matches+'</div><div style="color:#666;font-size:11px;">matches</div></div></div>' +
+      '<div class="tip">💡 '+v.tip+'</div>' +
+      '<div class="travel-links">' +
+      '<a href="'+travelUrl('booking',q)+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(255,107,53,0.13);color:#FF8A65;border:1px solid rgba(255,107,53,0.27);">Hotels ↗</a>' +
+      '<a href="'+travelUrl('airbnb',q)+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(230,57,70,0.13);color:#E63946;border:1px solid rgba(230,57,70,0.27);">Airbnb ↗</a>' +
+      '<a href="'+travelUrl('getyourguide',q)+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(255,215,0,0.13);color:#FFD700;border:1px solid rgba(255,215,0,0.27);">Tours ↗</a>' +
+      '<a href="'+ticketsUrl(v.city+' World Cup 2026')+'" target="_blank" rel="nofollow noreferrer" style="background:rgba(76,175,80,0.13);color:#4CAF50;border:1px solid rgba(76,175,80,0.27);">Tickets ↗</a>' +
+      '</div></div>';
+  }).join('');
+
+  // ----- Fan shop (Amazon affiliate) -----
+  var GEAR = [
+    {e:'👕', n:'Team Jerseys',    d:'Official 2026 home & away kits for every nation.', q:'2026 world cup soccer jersey'},
+    {e:'⚽', n:'Match Balls',     d:'The official 2026 ball & training replicas.',     q:'2026 world cup soccer ball'},
+    {e:'🧣', n:'Scarves & Flags', d:'Rep your country in the stands or at home.',       q:'world cup country flag scarf'},
+    {e:'👟', n:'Boots & Cleats',  d:'Pro football boots worn by the stars.',            q:'soccer cleats football boots'},
+    {e:'🎽', n:'Fan Apparel',     d:'Tees, hoodies & caps for matchday.',               q:'world cup soccer fan shirt'},
+    {e:'📺', n:'Watch Party',     d:'Everything for the perfect watch party.',          q:'soccer watch party supplies'}
+  ];
+  var gg = document.getElementById('gear-grid');
+  if (gg) {
+    gg.innerHTML = GEAR.map(function(g){
+      return '<a class="shop-card" href="'+amazonUrl(g.q)+'" target="_blank" rel="nofollow noopener sponsored">' +
+        '<div class="se">'+g.e+'</div><div class="sn">'+g.n+'</div>' +
+        '<div class="sd">'+g.d+'</div><span class="sb">Shop on Amazon ↗</span></a>';
+    }).join('');
+  }
+
+  // ----- "Watch from anywhere" VPN banner (high-payout affiliate) -----
+  var vslot = document.getElementById('vpn-slot');
+  if (vslot) {
+    var vpnHref = AFFILIATES.vpnUrl || 'https://nordvpn.com';
+    vslot.innerHTML = '<div class="vpn-banner"><div>' +
+      '<div class="vt">📺 Can\'t watch the matches in your country?</div>' +
+      '<div class="vp">Stream every game from anywhere with a VPN — fast, private, works on every device.</div></div>' +
+      '<a href="'+vpnHref+'" target="_blank" rel="nofollow noopener sponsored">Get '+(AFFILIATES.vpnName||'VPN')+' →</a></div>';
+  }
+
+  // ----- Google AdSense (renders only once you add your IDs above) -----
+  (function initAds(){
+    var adDiv = document.querySelector('.ad');
+    if (!adDiv || !ADSENSE_CLIENT || !ADSENSE_SLOT) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(ADSENSE_CLIENT);
+    s.crossOrigin = 'anonymous';
+    document.head.appendChild(s);
+    adDiv.innerHTML = '<ins class="adsbygoogle" style="display:block" data-ad-client="' + ADSENSE_CLIENT +
+      '" data-ad-slot="' + ADSENSE_SLOT + '" data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  })();
+
+  function subscribe() {
+    var input = document.getElementById('nl-email');
+    var email = (input.value || '').trim();
+    // Simple but real email check: something@something.tld
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email'); return; }
+
+    var btn = document.querySelector('#nl-form button');
+    var original = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Joining…';
+
+    function showSuccess() {
+      document.getElementById('nl-form').classList.add('hidden');
+      document.getElementById('nl-success').classList.remove('hidden');
+    }
+    function fail() {
+      btn.disabled = false;
+      btn.textContent = original;
+      alert('Something went wrong. Please try again in a moment.');
+    }
+
+    fetch(SUPABASE_URL + '/rest/v1/subscribers', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email: email })
+    }).then(function (res) {
+      // 201 = inserted, 409 = already subscribed (unique email). Both are a win for the user.
+      if (res.ok || res.status === 409) { showSuccess(); }
+      else { res.text().then(function (t) { console.error('Subscribe failed:', res.status, t); }); fail(); }
+    }).catch(function (err) {
+      console.error('Subscribe network error:', err);
+      fail();
+    });
+  }
+
+  // Submit Predictions button
+  var subBtn = document.getElementById('submit-predictions');
+  if (subBtn) {
+    subBtn.addEventListener('click', async function() {
+      // Predictions must belong to a user (for the dashboard + leaderboard).
+      var sessionRes = await sb.auth.getSession();
+      if (!sessionRes.data.session) {
+        openAuth('signup', 'Create a free account to save your predictions and join the leaderboard.');
+        return;
+      }
+      var userId = sessionRes.data.session.user.id;
+
+      var rows = [];
+      document.querySelectorAll('#predict-matches .match').forEach(function(row) {
+        var home = row.querySelector('.pred-home').value;
+        var away = row.querySelector('.pred-away').value;
+        if (home === '' && away === '') return; // skip matches left blank
+        rows.push({
+          user_id: userId,
+          match_label: row.getAttribute('data-label'),
+          home_score: home === '' ? null : parseInt(home, 10),
+          away_score: away === '' ? null : parseInt(away, 10)
+        });
+      });
+      if (rows.length === 0) { alert('Enter at least one score to submit.'); return; }
+
+      subBtn.disabled = true;
+      subBtn.textContent = 'Submitting…';
+
+      var result = await sb.from('predictions').insert(rows);
+      if (result.error) {
+        console.error('Predictions failed:', result.error);
+        subBtn.disabled = false;
+        subBtn.textContent = 'Submit Predictions';
+        alert('Could not save your predictions. Please try again.');
+        return;
+      }
+      document.getElementById('predict-success').classList.remove('hidden');
+      subBtn.textContent = 'Predictions Submitted ✓';
+      subBtn.style.opacity = '0.7';
+      if (typeof refreshAccount === 'function') refreshAccount();
+    });
+  }
+
+  // Mobile menu toggle
+  var menuToggle = document.getElementById('menu-toggle');
+  var navLinks = document.getElementById('nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() { navLinks.classList.toggle('open'); });
+    navLinks.addEventListener('click', function(e) { if (e.target.tagName === 'A') navLinks.classList.remove('open'); });
+  }
+
+  // Close article modal with Escape key
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeArticle(); });
+
+  // Repoint the inline "Upgrade Now" box to real checkout.
+  var upBtn2 = document.getElementById('upgrade-btn');
+  if (upBtn2) { upBtn2.onclick = function(){ buyPlan('monthly'); }; }
+</script>
+
+<!-- ============ ACCOUNTS · LEADERBOARD · PREMIUM · SHARE ============ -->
+<script>
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+
+  // ---------- Auth modal ----------
+  var authMode = 'signup';
+  function openAuth(mode, subtitle) {
+    setAuthMode(mode || 'signup');
+    if (subtitle) document.getElementById('auth-subtitle').textContent = subtitle;
+    document.getElementById('auth-msg').textContent = '';
+    document.getElementById('auth-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAuth() {
+    document.getElementById('auth-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function setAuthMode(mode) {
+    authMode = mode;
+    var isSignup = mode === 'signup';
+    document.getElementById('tab-signup').classList.toggle('active', isSignup);
+    document.getElementById('tab-login').classList.toggle('active', !isSignup);
+    document.getElementById('auth-name').style.display = isSignup ? 'block' : 'none';
+    document.getElementById('auth-submit').textContent = isSignup ? 'Create account' : 'Log in';
+    document.getElementById('auth-subtitle').textContent = isSignup ? 'Create your free account' : 'Welcome back';
+    document.getElementById('auth-msg').textContent = '';
+  }
+  async function submitAuth(e) {
+    e.preventDefault();
+    var email = document.getElementById('auth-email').value.trim();
+    var password = document.getElementById('auth-password').value;
+    var name = document.getElementById('auth-name').value.trim();
+    var msg = document.getElementById('auth-msg');
+    var btn = document.getElementById('auth-submit');
+    var orig = btn.textContent;
+    msg.style.color = '#E63946';
+    btn.disabled = true; btn.textContent = 'Please wait…';
+    try {
+      if (authMode === 'signup') {
+        var r = await sb.auth.signUp({ email: email, password: password, options: { data: { display_name: name || email.split('@')[0] } } });
+        if (r.error) { msg.textContent = r.error.message; }
+        else if (r.data.session) { closeAuth(); }          // email confirmation off → straight in
+        else { msg.style.color = '#4CAF50'; msg.textContent = 'Almost there — check your email to confirm, then log in.'; }
+      } else {
+        var r2 = await sb.auth.signInWithPassword({ email: email, password: password });
+        if (r2.error) { msg.textContent = r2.error.message; } else { closeAuth(); }
+      }
+    } catch (err) { console.error(err); msg.textContent = 'Something went wrong. Please try again.'; }
+    btn.disabled = false; btn.textContent = orig;
+    return false;
+  }
+  async function logout() { await sb.auth.signOut(); }
+
+  // ---------- Account state ----------
+  var currentProfile = null;
+
+  function renderAccountArea(user, profile) {
+    var area = document.getElementById('account-area');
+    if (!area) return;
+    if (!user) {
+      area.innerHTML = '<button class="btn-ghost" onclick="openAuth(\'login\')">Log in</button>' +
+        '<a href="#" class="btn-gold" onclick="openAuth(\'signup\');return false;">Join Free</a>';
+    } else {
+      var name = (profile && profile.display_name) || user.email.split('@')[0];
+      var badge = (profile && profile.is_premium) ? ' <span class="premium-badge">PREMIUM</span>' : '';
+      area.innerHTML = '<a href="#dashboard" class="acct-name">' + escapeHtml(name) + '</a>' + badge +
+        ' <button class="btn-ghost" onclick="logout()">Log out</button>';
+    }
+  }
+
+  async function refreshAccount() {
+    var sres = await sb.auth.getSession();
+    var session = sres.data.session;
+    var dash = document.getElementById('dashboard');
+    if (!session) {
+      currentProfile = null;
+      renderAccountArea(null, null);
+      if (dash) dash.style.display = 'none';
+      applyPremiumUI(false);
+      return;
+    }
+    var user = session.user;
+    var pr = await sb.from('profiles').select('display_name,is_premium,points').eq('id', user.id).single();
+    currentProfile = pr.data || { display_name: user.email.split('@')[0], is_premium: false, points: 0 };
+    renderAccountArea(user, currentProfile);
+    applyPremiumUI(!!currentProfile.is_premium);
+    await renderDashboard(user, currentProfile);
+  }
+
+  async function renderDashboard(user, profile) {
+    var dash = document.getElementById('dashboard');
+    if (!dash) return;
+    dash.style.display = 'block';
+    document.getElementById('dash-greeting').textContent = 'Welcome back, ' + (profile.display_name || 'fan') + '!';
+    document.getElementById('dash-plan').textContent = profile.is_premium
+      ? '⭐ Premium member — full access unlocked'
+      : 'Free plan — upgrade for the full bracket + AI predictions';
+    document.getElementById('dash-points').textContent = profile.points || 0;
+
+    var preds = await sb.from('predictions').select('match_label,home_score,away_score,created_at').eq('user_id', user.id).order('created_at', { ascending: false });
+    var list = preds.data || [];
+    document.getElementById('dash-pred-count').textContent = list.length;
+    var box = document.getElementById('dash-predictions');
+    if (list.length === 0) {
+      box.innerHTML = '<p style="color:#888;font-size:14px;">No predictions yet. <a href="#predict" style="color:#FFD700;">Make your first pick →</a></p>';
+    } else {
+      box.innerHTML = '<div style="color:#888;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Your picks</div>' +
+        list.slice(0, 12).map(function(p){
+          return '<div class="my-pred"><span>' + escapeHtml(p.match_label || 'Match') + '</span>' +
+            '<span class="sc">' + (p.home_score==null?'–':p.home_score) + ' : ' + (p.away_score==null?'–':p.away_score) + '</span></div>';
+        }).join('');
+    }
+    var picks = list.slice(0,5).map(function(p){ return p.match_label + ' ' + (p.home_score==null?'?':p.home_score) + '-' + (p.away_score==null?'?':p.away_score); }).join(' · ');
+    renderShare('dash-share', list.length ? ('My World Cup 2026 picks 👉 ' + picks) : 'I just joined MatchDay 2026 to predict the World Cup! ⚽');
+  }
+
+  // Premium gating hook: add data-premium="1" to ANY element to lock it for free users.
+  function applyPremiumUI(isPremium) {
+    document.querySelectorAll('[data-premium]').forEach(function(el){
+      if (isPremium) { el.style.filter=''; el.style.pointerEvents=''; el.removeAttribute('title'); }
+      else { el.style.filter='blur(4px)'; el.style.pointerEvents='none'; el.title='Premium only — upgrade to unlock'; }
+    });
+  }
+
+  // ---------- Leaderboard ----------
+  async function loadLeaderboard() {
+    var box = document.getElementById('leaderboard-list');
+    if (!box) return;
+    var r = await sb.from('leaderboard').select('display_name,points').limit(10);
+    if (r.error) { console.error('Leaderboard:', r.error); }
+    var rows = r.data || [];
+    if (rows.length === 0) {
+      box.innerHTML = '<div class="lb-row"><span class="lb-rank">—</span><span class="lb-name" style="color:#888;font-weight:400;">Be the first on the board — make a prediction!</span></div>';
+      return;
+    }
+    box.innerHTML = rows.map(function(row, i){
+      var medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':String(i+1);
+      return '<div class="lb-row' + (i<3?' top':'') + '"><span class="lb-rank">' + medal + '</span>' +
+        '<span class="lb-name">' + escapeHtml(row.display_name || 'Anonymous') + '</span>' +
+        '<span class="lb-pts">' + (row.points||0) + ' <span>pts</span></span></div>';
+    }).join('');
+  }
+
+  // ---------- Stripe checkout ----------
+  async function buyPlan(plan) {
+    var sres = await sb.auth.getSession();
+    if (!sres.data.session) { openAuth('signup', 'Create your free account first, then complete checkout.'); return; }
+    var link = STRIPE_LINKS[plan];
+    if (!link || link.indexOf('PASTE_') === 0) {
+      alert('Checkout isn\'t live yet — add your Stripe Payment Links in the config to enable it.');
+      return;
+    }
+    var email = sres.data.session.user.email;
+    var url = link + (link.indexOf('?')===-1?'?':'&') + 'prefilled_email=' + encodeURIComponent(email);
+    window.location.href = url;
+  }
+
+  // ---------- Share ----------
+  function renderShare(containerId, text) {
+    var el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML =
+      '<button class="share-btn share-x" data-net="x">𝕏 Share</button>' +
+      '<button class="share-btn share-wa" data-net="wa">WhatsApp</button>' +
+      '<button class="share-btn share-cp" data-net="copy">Copy</button>';
+    el.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){ shareTo(b.getAttribute('data-net'), text); });
+    });
+  }
+  function shareTo(net, text) {
+    var url = 'https://matchday2026.net';
+    if (net === 'x') { window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank', 'noopener'); }
+    else if (net === 'wa') { window.open('https://wa.me/?text=' + encodeURIComponent(text + ' ' + url), '_blank', 'noopener'); }
+    else {
+      var payload = text + ' ' + url;
+      if (navigator.clipboard) { navigator.clipboard.writeText(payload).then(function(){ alert('Copied! Paste it anywhere.'); }); }
+      else { window.prompt('Copy this:', payload); }
+    }
+  }
+
+  // ---------- Live scores (real World Cup data via /api/scores) ----------
+  // Fetches scores from our serverless proxy, which holds the football-data.org
+  // token server-side. Falls back to the scheduled fixtures if the proxy isn't
+  // reachable (e.g. opening the file locally without the /api function).
+  async function refreshLiveScores() {
+    try {
+      var res = await fetch('/api/scores', { cache: 'no-store' });
+      if (!res.ok) return;
+      var data = await res.json();
+      var all = data.matches || [];
+      if (!all.length) return;
+      var live = all.filter(function(m){ return m.status === 'LIVE'; });
+      var ft   = all.filter(function(m){ return m.status === 'FT'; }).sort(function(a,b){ return new Date(b.utc) - new Date(a.utc); });
+      var up   = all.filter(function(m){ return m.status === 'UPCOMING'; }).sort(function(a,b){ return new Date(a.utc) - new Date(b.utc); });
+      MATCHES = live.concat(ft.slice(0,3)).concat(up.slice(0,9)); // live first, a few recent results, then next up
+      renderMatches();
+    } catch (e) { /* offline / local preview — keep the scheduled fixtures */ }
+  }
+
+  // ---------- Boot ----------
+  var freeBtn = document.getElementById('plan-free-btn');
+  if (freeBtn) freeBtn.addEventListener('click', function(){ openAuth('signup'); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAuth(); });
+
+  sb.auth.onAuthStateChange(function(){ refreshAccount(); });
+  refreshAccount();
+  loadLeaderboard();
+  refreshLiveScores();
+  setInterval(refreshLiveScores, 30000); // refresh live scores every 30s
+</script>
+</body>
+</html>
