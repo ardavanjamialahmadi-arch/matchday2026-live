@@ -47,7 +47,10 @@ module.exports = async (req, res) => {
 
     // 2. Ask Claude to write a short preview for each fixture.
     const list = fixtures.map((f) => `- ${f.home} vs ${f.away} (Group ${f.group}, ${f.date})`).join('\n');
-    const system = 'You are an expert football journalist writing concise, engaging match previews for MatchDay 2026, a FIFA World Cup 2026 fan site. Voice: knowledgeable, energetic, and neutral. Never give betting or gambling advice.';
+    const system = 'You are an expert football journalist writing concise, engaging match previews for MatchDay 2026, a FIFA World Cup 2026 fan site. ' +
+      'The 2026 FIFA World Cup is co-hosted by the United States, Canada, and Mexico — never refer to any other host country or venue (e.g. never say Qatar, Russia, or Brazil). ' +
+      'Do not invent specific venues, player names, or stats you are unsure of; keep previews focused on the teams, their style, and the matchup. ' +
+      'Voice: knowledgeable, energetic, and neutral. Never give betting or gambling advice.';
     const userMsg =
       'Write a short preview for each of these upcoming World Cup 2026 fixtures:\n' + list + '\n\n' +
       'Return ONLY a JSON array — no markdown, no commentary, nothing outside the array. ' +
