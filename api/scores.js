@@ -11,6 +11,7 @@
 
 const STAGE_LABELS = {
   GROUP_STAGE: 'Group Stage',
+  LAST_32: 'Round of 32',
   LAST_16: 'Round of 16',
   QUARTER_FINALS: 'Quarter-final',
   SEMI_FINALS: 'Semi-final',
@@ -60,6 +61,8 @@ module.exports = async (req, res) => {
         aht: ht.away == null ? null : ht.away,   // half-time away goals
         min: m.minute ? (m.minute + "'") : (st === 'PAUSED' ? 'HT' : ''),
         label: grp ? ('Group ' + grp) : (STAGE_LABELS[m.stage] || 'World Cup'),
+        stage: m.stage || '',                     // raw stage (for the knockout bracket)
+        group: grp,                               // group letter, '' for knockouts
         venue: m.venue || '',
         date: fmtDate(m.utcDate),
         time: fmtTime(m.utcDate),
