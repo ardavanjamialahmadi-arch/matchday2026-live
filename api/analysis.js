@@ -17,14 +17,21 @@ module.exports = async (req, res) => {
     if (!aiKey) { res.status(500).json({ error: 'Missing ANTHROPIC_API_KEY env var', articles: [] }); return; }
 
     // 1. Get the next few upcoming World Cup fixtures.
+    //    NOTE: football-data marks not-yet-started matches as SCHEDULED *or*
+    //    TIMED (TIMED only once an exact kickoff time is locked in). Filtering
+    //    on ?status=TIMED alone misses most of the schedule, so we fetch all
+    //    matches and pick the soonest upcoming ones in code (same approach as
+    //    /api/scores).
     let fixtures = [];
     try {
-      const r = await fetch('https://api.football-data.org/v4/competitions/WC/matches?status=TIMED', {
+      const r = await fetch('https://api.football-data.org/v4/competitions/WC/matches', {
         headers: { 'X-Auth-Token': fdToken }
       });
       if (r.ok) {
         const d = await r.json();
+        const now = Date.now();
         fixtures = (d.matches || [])
+          .filter((m) => (m.status === 'SCHEDULED' || m.status === 'TIMED') && new Date(m.utcDate).getTime() > now)
           .sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate))
           .slice(0, 4)
           .map((m) => ({
