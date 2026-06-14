@@ -111,6 +111,44 @@
   .hl-btn { display: block; text-align: center; background: rgba(230,57,70,0.14); color: #ff6b78; border: 1px solid rgba(230,57,70,0.4); padding: 9px; border-radius: 9px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s ease; }
   .hl-btn:hover { background: rgba(230,57,70,0.26); }
 
+  /* Road to the final — group standings + knockout bracket */
+  .sub-h { font-family: 'Bebas Neue',cursive; letter-spacing: 1.5px; font-size: 22px; color: #FFD700; margin: 0 0 16px; }
+  .grp-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(290px,1fr)); gap: 14px; }
+  .grp-card { background: linear-gradient(180deg,#20203a 0%,#1A1A2E 100%); border: 1px solid rgba(255,215,0,0.12); border-radius: 14px; padding: 14px 16px; }
+  .grp-name { font-family: 'Bebas Neue',cursive; letter-spacing: 1px; font-size: 17px; color: #fff; margin-bottom: 10px; }
+  .grp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .grp-table th { color: #777; font-weight: 600; text-align: center; padding: 4px 3px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px; }
+  .grp-table th.tl, .grp-table td.tl { text-align: left; }
+  .grp-table td { color: #D0D0DC; text-align: center; padding: 6px 3px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .grp-table td.tl { text-align: left; }
+  .grp-table .tcell { display: flex; align-items: center; gap: 7px; }
+  .grp-table .tcell img { width: 18px; height: 18px; object-fit: contain; border-radius: 2px; flex-shrink: 0; }
+  .grp-table .tcell span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grp-table td.pts { color: #FFD700; font-weight: 700; }
+  .grp-table tr.adv td { background: rgba(106,175,158,0.09); }
+  .grp-table tr.adv .pos { color: #6AAF9E; font-weight: 700; }
+  .grp-pos { display: inline-block; width: 16px; }
+  .grp-legend { color: #6AAF9E; font-size: 11px; margin-top: 8px; display: flex; align-items: center; gap: 6px; }
+  .grp-legend i { width: 9px; height: 9px; border-radius: 2px; background: rgba(106,175,158,0.5); display: inline-block; }
+
+  .bracket-wrap { overflow-x: auto; padding-bottom: 12px; }
+  .bracket { display: inline-flex; gap: 18px; align-items: stretch; min-width: min-content; }
+  .bk-col { display: flex; flex-direction: column; justify-content: space-around; gap: 12px; min-width: 190px; }
+  .bk-round-title { font-family: 'Bebas Neue',cursive; letter-spacing: 1px; font-size: 14px; color: #9a9ab0; text-align: center; padding: 6px 8px; background: #0F0F1A; border: 1px solid #333; border-radius: 999px; margin-bottom: 4px; }
+  .bk-match { background: linear-gradient(180deg,#20203a 0%,#1A1A2E 100%); border: 1px solid rgba(255,215,0,0.12); border-radius: 10px; padding: 8px 10px; }
+  .bk-team { display: flex; align-items: center; gap: 7px; padding: 4px 0; font-size: 13px; color: #E0E0EC; }
+  .bk-team img { width: 18px; height: 18px; object-fit: contain; border-radius: 2px; flex-shrink: 0; }
+  .bk-team .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex: 1; }
+  .bk-team .sc { color: #FFD700; font-weight: 700; }
+  .bk-team.tbd { color: #666; }
+  .bk-team.win .nm { color: #fff; font-weight: 700; }
+  .bk-vs-line { height: 1px; background: rgba(255,255,255,0.07); margin: 2px 0; }
+  .bk-champ { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-width: 200px; background: radial-gradient(circle at 50% 30%, rgba(255,215,0,0.16) 0%, rgba(255,215,0,0) 70%); }
+  .bk-trophy { font-size: 64px; line-height: 1; filter: drop-shadow(0 6px 20px rgba(255,215,0,0.45)); animation: trophyfloat 3s ease-in-out infinite; }
+  @keyframes trophyfloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+  .bk-champ-label { font-family: 'Bebas Neue',cursive; letter-spacing: 2px; color: #FFD700; font-size: 20px; text-align: center; }
+  .bk-champ-name { color: #fff; font-weight: 700; font-size: 15px; text-align: center; }
+
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   }
@@ -278,6 +316,7 @@
     <button id="menu-toggle" aria-label="Menu" style="display:none;background:none;border:none;color:#FFD700;font-size:26px;cursor:pointer;line-height:1;">☰</button>
     <div class="nav-links" id="nav-links">
       <a href="#scores">Scores</a>
+      <a href="#bracket-sec">Bracket</a>
       <a href="#predict">Predict</a>
       <a href="#leaderboard">Leaderboard</a>
       <a href="#analysis">Analysis</a>
@@ -389,6 +428,19 @@
       <h2 class="sec">MATCH HIGHLIGHTS</h2>
       <p style="color:#B0B0C0;margin-bottom:1.5rem;">Catch up on the action — watch the official highlights from the latest finished matches.</p>
       <div id="highlights" class="hl-grid"></div>
+    </section>
+
+    <!-- ROAD TO THE FINAL (group standings + knockout bracket) -->
+    <section class="block" id="bracket-sec">
+      <h2 class="sec">ROAD TO THE FINAL <span style="font-size:0.9em;">🏆</span></h2>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Follow every team's journey — from the group tables to the knockout bracket and the trophy. The top 2 of each group (plus the 8 best 3rd-place teams) advance.</p>
+
+      <h3 class="sub-h">Group Standings</h3>
+      <div id="standings" class="grp-grid"></div>
+
+      <h3 class="sub-h" style="margin-top:2.5rem;">Knockout Bracket</h3>
+      <p style="color:#777;font-size:13px;margin:-6px 0 14px;">Scroll sideways to follow the path to the final. Teams fill in as the group stage finishes. →</p>
+      <div id="bracket" class="bracket-wrap"></div>
     </section>
 
     <!-- TEAMS -->
@@ -717,8 +769,8 @@
         statusHtml = '<span class="mstatus live"><span class="livedot"></span>LIVE' + (m.min ? '&nbsp;' + m.min : '') + '</span>';
         middle = '<div class="fx-score">' + (m.hs==null?0:m.hs) + '<span class="sep">:</span>' + (m.as==null?0:m.as) + '</div>';
         var liveBits = [];
-        if (m.min) liveBits.push('<span class="pill clock">⏱ ' + m.min + '</span>');
-        if (ht) liveBits.push('<span class="pill">' + ht + '</span>');
+        if (m.min) liveBits.push('<span class="pill clock">' + (m.min === 'HT' ? '⏸ Half-time' : '⏱ ' + m.min) + '</span>');
+        if (ht) liveBits.push('<span class="pill">1st half: ' + m.hht + '–' + m.aht + '</span>');
         if (m.time) liveBits.push('<span class="pill">Kick-off ' + m.time + '</span>');
         detail = liveBits.length ? '<div class="fx-detail">' + liveBits.join('') + '</div>' : '';
       } else if (m.status === 'FT') {
@@ -786,6 +838,107 @@
     }).join('');
   }
   renderHighlights();
+
+  // ---------- Road to the final: group standings + knockout bracket ----------
+  function renderStandings(groups) {
+    var el = document.getElementById('standings');
+    if (!el) return;
+    if (!groups || !groups.length) {
+      el.innerHTML = '<p style="color:#777;">Group tables appear here once the group stage is under way. ⚽</p>';
+      return;
+    }
+    el.innerHTML = groups.map(function(g){
+      var rows = g.table.map(function(r){
+        var adv = r.pos <= 2;
+        return '<tr class="' + (adv ? 'adv' : '') + '">' +
+          '<td class="pos"><span class="grp-pos">' + r.pos + '</span></td>' +
+          '<td class="tl"><div class="tcell">' + (r.crest ? '<img loading="lazy" decoding="async" src="' + r.crest + '" alt="' + r.team + '"/>' : '') + '<span>' + r.team + '</span></div></td>' +
+          '<td>' + r.played + '</td>' +
+          '<td>' + (r.gd > 0 ? '+' : '') + r.gd + '</td>' +
+          '<td class="pts">' + r.points + '</td>' +
+        '</tr>';
+      }).join('');
+      return '<div class="grp-card"><div class="grp-name">Group ' + g.name + '</div>' +
+        '<table class="grp-table"><thead><tr><th>#</th><th class="tl">Team</th><th>P</th><th>GD</th><th>Pts</th></tr></thead>' +
+        '<tbody>' + rows + '</tbody></table>' +
+        '<div class="grp-legend"><i></i> Top 2 advance to the knockouts</div></div>';
+    }).join('');
+  }
+  async function loadStandings() {
+    try {
+      var res = await fetch('/api/standings', { cache: 'no-store' });
+      if (!res.ok) { renderStandings([]); return; }
+      var data = await res.json();
+      renderStandings(data.groups || []);
+    } catch (e) { renderStandings([]); }   // local preview / offline
+  }
+
+  function bracketMatch(m) {
+    var home = m.home || 'TBD', away = m.away || 'TBD';
+    var hasScore = (m.status === 'FT' || m.status === 'LIVE') && m.hs != null && m.as != null;
+    var hw = hasScore && m.hs > m.as, aw = hasScore && m.as > m.hs;
+    function row(name, crest, score, win, tbd) {
+      return '<div class="bk-team' + (win ? ' win' : '') + (tbd ? ' tbd' : '') + '">' +
+        (tbd ? '<span style="width:18px;text-align:center;">–</span>' : teamImg(crest, '', name)) +
+        '<span class="nm">' + name + '</span>' +
+        (hasScore ? '<span class="sc">' + score + '</span>' : '') +
+      '</div>';
+    }
+    return '<div class="bk-match">' +
+      row(home, m.crestHome, m.hs, hw, !m.home) +
+      '<div class="bk-vs-line"></div>' +
+      row(away, m.crestAway, m.as, aw, !m.away) +
+    '</div>';
+  }
+  function renderBracket() {
+    var el = document.getElementById('bracket');
+    if (!el) return;
+    var src = (window.ALL_MATCHES && window.ALL_MATCHES.length) ? window.ALL_MATCHES : MATCHES;
+    var order = ['LAST_32','LAST_16','QUARTER_FINALS','SEMI_FINALS','FINAL'];
+    var titles = { LAST_32:'Round of 32', LAST_16:'Round of 16', QUARTER_FINALS:'Quarter-finals', SEMI_FINALS:'Semi-finals', FINAL:'Final' };
+    var byStage = {};
+    src.forEach(function(m){
+      var st = m.stage;
+      if (!st || st === 'GROUP_STAGE' || st === 'THIRD_PLACE') return;
+      (byStage[st] = byStage[st] || []).push(m);
+    });
+    var stages = order.filter(function(s){ return byStage[s] && byStage[s].length; });
+    Object.keys(byStage).forEach(function(s){ if (order.indexOf(s) === -1) stages.push(s); });
+
+    if (!stages.length) {
+      el.innerHTML = '<p style="color:#777;">The knockout bracket unlocks once the group stage finishes — the champion will be crowned right here. 🏆</p>';
+      return;
+    }
+
+    // Champion = winner of the final, once it's played.
+    var champName = '', champCrest = '';
+    var finals = byStage['FINAL'] || [];
+    if (finals.length) {
+      var f = finals[0];
+      if (f.status === 'FT' && f.hs != null && f.as != null && f.hs !== f.as) {
+        if (f.hs > f.as) { champName = f.home; champCrest = f.crestHome; }
+        else { champName = f.away; champCrest = f.crestAway; }
+      }
+    }
+
+    var cols = stages.map(function(st){
+      var ms = byStage[st].slice().sort(function(a,b){ return new Date(a.utc) - new Date(b.utc); });
+      return '<div class="bk-col"><div class="bk-round-title">' + (titles[st] || st.replace(/_/g,' ')) + '</div>' +
+        ms.map(bracketMatch).join('') + '</div>';
+    }).join('');
+
+    var champHtml = '<div class="bk-col bk-champ">' +
+      '<div class="bk-trophy">🏆</div>' +
+      '<div class="bk-champ-label">CHAMPION</div>' +
+      (champName
+        ? '<div class="bk-champ-name">' + teamImg(champCrest, '', champName) + ' ' + champName + '</div>'
+        : '<div class="bk-champ-name" style="color:#666;">To be crowned</div>') +
+    '</div>';
+
+    el.innerHTML = '<div class="bracket">' + cols + champHtml + '</div>';
+  }
+  renderBracket();
+  loadStandings();
 
   // All 48 nations of the 2026 World Cup, grouped A–L.
   var TEAMS = [
@@ -1289,6 +1442,8 @@
       MATCHES = live.concat(ft.slice(0,3)).concat(up.slice(0,9)); // live first, a few recent results, then next up
       renderMatches();
       renderHighlights();                                         // refresh highlights as matches finish
+      renderBracket();                                            // refresh knockout bracket from the full list
+      loadStandings();                                            // refresh group tables as results come in
       if (typeof syncPredictor === 'function') syncPredictor();   // predictor follows the next real upcoming matches
     } catch (e) { /* offline / local preview — keep the scheduled fixtures */ }
   }
