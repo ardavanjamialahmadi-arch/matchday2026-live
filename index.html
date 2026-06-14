@@ -3,12 +3,65 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MatchDay 2026 | FIFA World Cup Hub</title>
-<meta name="description" content="Live scores, predictions, team stats, travel guides and in-depth match analysis for FIFA World Cup 2026 - Canada, USA & Mexico" />
-<meta name="keywords" content="World Cup 2026, FIFA, soccer, football, live scores, predictions, bracket" />
-<meta property="og:title" content="MatchDay 2026 | FIFA World Cup Hub" />
-<meta property="og:description" content="Your ultimate destination for World Cup 2026" />
+<title>World Cup 2026 Live Scores, Predictions & Bracket | MatchDay 2026</title>
+<meta name="description" content="MatchDay 2026 — live World Cup 2026 scores, daily match predictions, the full group standings and knockout bracket, team guides and fan travel tips for the USA, Canada & Mexico tournament." />
+<meta name="keywords" content="World Cup 2026, FIFA World Cup 2026, World Cup 2026 predictions, World Cup 2026 bracket, World Cup 2026 schedule, World Cup live scores, World Cup standings, soccer, football" />
+<meta name="robots" content="index, follow" />
+<meta name="author" content="MatchDay 2026" />
+<meta name="theme-color" content="#0F0F1A" />
+<link rel="canonical" href="https://matchday2026.net/" />
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn, Reddit) -->
+<meta property="og:site_name" content="MatchDay 2026" />
+<meta property="og:title" content="World Cup 2026 Live Scores, Predictions & Bracket" />
+<meta property="og:description" content="Live scores, daily predictions, group standings, the knockout bracket and fan guides for the FIFA World Cup 2026." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://matchday2026.net/" />
+<meta property="og:image" content="https://matchday2026.net/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="World Cup 2026 Live Scores, Predictions & Bracket" />
+<meta name="twitter:description" content="Live scores, daily predictions, standings, the knockout bracket and fan guides for the FIFA World Cup 2026." />
+<meta name="twitter:image" content="https://matchday2026.net/og-image.png" />
+
+<!-- Structured data so Google understands the site -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://matchday2026.net/#website",
+      "url": "https://matchday2026.net/",
+      "name": "MatchDay 2026",
+      "description": "Live scores, predictions, standings and the knockout bracket for the FIFA World Cup 2026."
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://matchday2026.net/#org",
+      "name": "MatchDay 2026",
+      "url": "https://matchday2026.net/"
+    },
+    {
+      "@type": "SportsEvent",
+      "name": "FIFA World Cup 2026",
+      "sport": "Soccer",
+      "startDate": "2026-06-11",
+      "endDate": "2026-07-19",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "Canada" },
+        { "@type": "Country", "name": "Mexico" }
+      ],
+      "url": "https://matchday2026.net/"
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://flagcdn.com" />
@@ -132,8 +185,11 @@
   .grp-legend i { width: 9px; height: 9px; border-radius: 2px; background: rgba(106,175,158,0.5); display: inline-block; }
 
   .bracket-wrap { overflow-x: auto; padding-bottom: 12px; }
-  .bracket { display: inline-flex; gap: 18px; align-items: stretch; min-width: min-content; }
-  .bk-col { display: flex; flex-direction: column; justify-content: space-around; gap: 12px; min-width: 190px; }
+  .bracket { display: inline-flex; gap: 18px; align-items: stretch; min-width: min-content; padding-right: 8px; }
+  .bk-col { display: flex; flex-direction: column; justify-content: center; gap: 12px; min-width: 190px; }
+  /* Always-visible trophy banner (sits above the scrolling bracket) */
+  .bk-champ-banner { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 20px; margin-bottom: 18px; border: 1px solid rgba(255,215,0,0.25); border-radius: 16px; background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.14) 0%, rgba(255,215,0,0) 65%), linear-gradient(180deg,#20203a 0%,#1A1A2E 100%); }
+  .bk-champ-name img { width: 22px; height: 22px; object-fit: contain; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
   .bk-round-title { font-family: 'Bebas Neue',cursive; letter-spacing: 1px; font-size: 14px; color: #9a9ab0; text-align: center; padding: 6px 8px; background: #0F0F1A; border: 1px solid #333; border-radius: 999px; margin-bottom: 4px; }
   .bk-match { background: linear-gradient(180deg,#20203a 0%,#1A1A2E 100%); border: 1px solid rgba(255,215,0,0.12); border-radius: 10px; padding: 8px 10px; }
   .bk-team { display: flex; align-items: center; gap: 7px; padding: 4px 0; font-size: 13px; color: #E0E0EC; }
@@ -440,7 +496,7 @@
 
       <h3 class="sub-h" style="margin-top:2.5rem;">Knockout Bracket</h3>
       <p style="color:#777;font-size:13px;margin:-6px 0 14px;">Scroll sideways to follow the path to the final. Teams fill in as the group stage finishes. →</p>
-      <div id="bracket" class="bracket-wrap"></div>
+      <div id="bracket"></div>
     </section>
 
     <!-- TEAMS -->
@@ -563,12 +619,12 @@
     <section class="newsletter">
       <div style="font-size:40px;margin-bottom:8px;">⚽</div>
       <h2>THE DAILY KICK</h2>
-      <p>Match previews, expert predictions, and World Cup news every morning. Free bracket PDF on signup!</p>
+      <p>Join the list for match previews, predictions and World Cup news. Free, and you can unsubscribe anytime.</p>
       <div class="nl-form" id="nl-form">
         <input type="email" id="nl-email" placeholder="your@email.com" />
-        <button onclick="subscribe()">Get Free Bracket</button>
+        <button onclick="subscribe()">Subscribe</button>
       </div>
-      <p id="nl-success" class="hidden" style="color:#4CAF50;font-weight:600;font-size:18px;">🎉 You're in! Check your email for your free bracket.</p>
+      <p id="nl-success" class="hidden" style="color:#4CAF50;font-weight:600;font-size:18px;">🎉 You're on the list! We'll be in touch with World Cup previews &amp; predictions.</p>
     </section>
 
     <div class="ad">Advertisement — Google AdSense (728×90)</div>
@@ -927,15 +983,16 @@
         ms.map(bracketMatch).join('') + '</div>';
     }).join('');
 
-    var champHtml = '<div class="bk-col bk-champ">' +
+    // Trophy banner — always visible above the (horizontally scrolling) bracket.
+    var banner = '<div class="bk-champ-banner">' +
       '<div class="bk-trophy">🏆</div>' +
-      '<div class="bk-champ-label">CHAMPION</div>' +
+      '<div class="bk-champ-label">WORLD CUP 2026 CHAMPION</div>' +
       (champName
         ? '<div class="bk-champ-name">' + teamImg(champCrest, '', champName) + ' ' + champName + '</div>'
-        : '<div class="bk-champ-name" style="color:#666;">To be crowned</div>') +
+        : '<div class="bk-champ-name" style="color:#888;">To be crowned — July 19, 2026</div>') +
     '</div>';
 
-    el.innerHTML = '<div class="bracket">' + cols + champHtml + '</div>';
+    el.innerHTML = banner + '<div class="bracket-wrap"><div class="bracket">' + cols + '</div></div>';
   }
   renderBracket();
   loadStandings();

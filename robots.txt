@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://matchday2026.net/sitemap.xml
