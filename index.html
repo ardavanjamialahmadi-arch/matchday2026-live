@@ -545,13 +545,9 @@
       <div id="articles"></div>
     </section>
 
-    <!-- ODDS -->
-    <section class="block" id="odds">
-      <h2 class="sec">BETTING ODDS</h2>
-      <p style="color:#B0B0C0;margin-bottom:6px;">Compare odds from top bookmakers. Best value in green.</p>
-      <p style="color:#E63946;font-size:12px;margin-bottom:1.5rem;">⚠️ 18+ only. Please gamble responsibly. Entertainment purposes.</p>
-      <div id="odds-tables"></div>
-    </section>
+    <!-- ODDS section removed — was hardcoded demo data with no live odds feed.
+         To bring it back, connect a real odds API (e.g. The Odds API) + a betting
+         affiliate, then restore this section and the ODDS render block in the script. -->
 
     <!-- TRAVEL -->
     <section class="block" id="travel">
@@ -695,7 +691,7 @@
       <div>
         <p style="color:#FFD700;font-weight:600;font-size:13px;margin-bottom:12px;">More</p>
         <a href="#analysis" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Analysis</a>
-        <a href="#odds" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Betting Odds</a>
+        <a href="#bracket-sec" style="display:block;color:#666;font-size:13px;margin-bottom:8px;">Bracket</a>
         <a href="#travel" style="display:block;color:#666;font-size:13px;">Travel Guide</a>
       </div>
     </div>
@@ -1034,7 +1030,7 @@
   var FEATURES = [
     {ic:'🏆',title:'Bracket Predictor',desc:'Predict every match and compete on our global leaderboard. Free to play!',cta:'Start Predicting →',color:'#FFD700',href:'#predict'},
     {ic:'📰',title:'Match Analysis',desc:'In-depth match previews and predictions for every game, fresh every day.',cta:'Read Analysis →',color:'#4FC3F7',href:'#analysis'},
-    {ic:'📊',title:'Odds Comparison',desc:'Compare betting odds from top bookmakers and find the best value.',cta:'View Odds →',color:'#81C784',href:'#odds'},
+    {ic:'🗺️',title:'Road to the Final',desc:'Live group standings and the full knockout bracket — follow every team to the trophy.',cta:'View Bracket →',color:'#81C784',href:'#bracket-sec'},
     {ic:'✈️',title:'Fan Travel Guide',desc:'Hotels, flights, and tips for all 16 World Cup stadiums across North America.',cta:'Plan Trip →',color:'#FF8A65',href:'#travel'}
   ];
   document.getElementById('features').innerHTML = FEATURES.map(function(c){
@@ -1117,25 +1113,9 @@
     document.body.style.overflow = '';
   }
 
-  var ODDS = [
-    {home:'Mexico',away:'South Africa',hf:'mx',af:'za',date:'Jun 11',rows:[['Bet365','2.10','3.40','3.20'],['DraftKings','2.15','3.35','3.10'],['BetMGM','2.05','3.50','3.25']]},
-    {home:'Canada',away:'Bosnia',hf:'ca',af:'ba',date:'Jun 12',rows:[['Bet365','2.80','3.20','2.50'],['DraftKings','2.75','3.25','2.55'],['BetMGM','2.85','3.15','2.45']]}
-  ];
-  var BOOKIES = AFFILIATES.bookies; // edit URLs in the AFFILIATES config at the top
-  document.getElementById('odds-tables').innerHTML = ODDS.map(function(o){
-    var rows = o.rows.map(function(r,i){
-      var url = BOOKIES[r[0]] || '#';
-      return '<tr style="border-bottom:1px solid rgba(26,26,46,0.2);"><td style="font-weight:600;color:#F0F0F0;">'+r[0]+'</td>' +
-        '<td'+(i===0?' class="best"':'')+'>'+r[1]+'</td><td style="color:#F0F0F0;">'+r[2]+'</td><td style="color:#F0F0F0;">'+r[3]+'</td>' +
-        '<td><a href="'+url+'" target="_blank" rel="nofollow noopener" class="bet-link">Bet Now ↗</a></td></tr>';
-    }).join('');
-    return '<div style="background:#1A1A2E;border:1px solid rgba(255,215,0,0.13);border-radius:12px;padding:1.5rem;margin-bottom:20px;">' +
-      '<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">' +
-      '<img loading="lazy" decoding="async" src="'+flag(o.hf,32,24)+'" width="32" height="24"/><span style="font-weight:700;font-size:18px;">'+o.home+'</span>' +
-      '<span class="vs">VS</span><span style="font-weight:700;font-size:18px;">'+o.away+'</span>' +
-      '<img loading="lazy" decoding="async" src="'+flag(o.af,32,24)+'" width="32" height="24"/><span style="color:#666;font-size:13px;margin-left:8px;">'+o.date+'</span></div>' +
-      '<div style="overflow-x:auto;"><table><thead><tr><th>Bookmaker</th><th>'+o.home+' Win</th><th>Draw</th><th>'+o.away+' Win</th><th>Bet</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
-  }).join('');
+  // Betting Odds section removed for now — it was hardcoded demo data with no live
+  // odds feed and no betting affiliate connected. To restore: re-add the #odds
+  // section markup, connect a real odds API + affiliate, and render here.
 
   var VENUES = [
     {city:'New York/NJ',stadium:'MetLife Stadium',country:'USA',f:'us',matches:8,tip:'Book via NJ Transit from Penn Station. Hotels in Hoboken are cheaper than Manhattan.'},
