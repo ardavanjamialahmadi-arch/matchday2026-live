@@ -764,15 +764,32 @@
       '<span class="cta" style="color:'+c.color+';">'+c.cta+'</span></a>';
   }).join('');
 
-  document.getElementById('predict-matches').innerHTML = MATCHES.slice(0,3).map(function(m){
-    return '<div class="match" data-label="'+m.home+' vs '+m.away+'" style="justify-content:center;gap:16px;">' +
-      '<div class="teams"><img loading="lazy" decoding="async" src="'+flag(m.hf,32,24)+'" width="32" height="24"/><span style="font-weight:600;">'+m.home+'</span></div>' +
-      '<input type="number" min="0" max="20" placeholder="0" class="pred-home" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
-      '<span style="color:#666;">–</span>' +
-      '<input type="number" min="0" max="20" placeholder="0" class="pred-away" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"/>' +
-      '<div class="teams"><span style="font-weight:600;">'+m.away+'</span><img loading="lazy" decoding="async" src="'+flag(m.af,32,24)+'" width="32" height="24"/></div></div>';
-  }).join('') + '<button id="submit-predictions" class="btn-fill" style="width:100%;border:none;cursor:pointer;padding:14px;margin-top:8px;font-size:16px;">Submit Predictions</button>' +
-    '<p id="predict-success" class="hidden" style="text-align:center;color:#4CAF50;font-weight:600;margin-top:12px;">✅ Predictions saved! Good luck climbing the leaderboard.</p>';
+  var predictorKey = '';
+  function renderPredictor(list) {
+    var box = document.getElementById('predict-matches');
+    if (!box) return;
+    if (!list || !list.length) {
+      box.innerHTML = '<p style="color:#888;font-size:14px;">No upcoming matches to predict right now — more coming soon!</p>';
+      return;
+    }
+    var inp = 'type="number" min="0" max="20" placeholder="0" style="width:52px;padding:8px;border-radius:6px;border:1px solid rgba(255,215,0,0.27);background:#0F0F1A;color:#FFD700;text-align:center;font-size:18px;font-weight:700;"';
+    box.innerHTML = list.map(function(m){
+      return '<div class="match" data-label="'+m.home+' vs '+m.away+'" style="justify-content:center;gap:16px;flex-wrap:wrap;">' +
+        '<div class="teams">'+teamImg(m.crestHome, m.hf, m.home)+'<span style="font-weight:600;">'+m.home+'</span></div>' +
+        '<input class="pred-home" '+inp+'/>' +
+        '<span style="color:#666;">–</span>' +
+        '<input class="pred-away" '+inp+'/>' +
+        '<div class="teams"><span style="font-weight:600;">'+m.away+'</span>'+teamImg(m.crestAway, m.af, m.away)+'</div></div>';
+    }).join('') + '<button id="submit-predictions" onclick="submitPredictions()" class="btn-fill" style="width:100%;border:none;cursor:pointer;padding:14px;margin-top:8px;font-size:16px;">Submit Predictions</button>' +
+      '<p id="predict-success" class="hidden" style="text-align:center;color:#4CAF50;font-weight:600;margin-top:12px;">✅ Predictions saved! Good luck climbing the leaderboard.</p>';
+  }
+  // Re-render only when the set of upcoming matches actually changes (preserves typed scores).
+  function syncPredictor() {
+    var up = MATCHES.filter(function(m){ return m.status === 'UPCOMING'; }).slice(0,3);
+    var key = up.map(function(m){ return m.home+'|'+m.away; }).join(',');
+    if (key !== predictorKey) { predictorKey = key; renderPredictor(up); }
+  }
+  syncPredictor();
 
   var ARTICLES = [
     {title:'Brazil vs Germany: The Clash of Titans',excerpt:'AI analysis of the most anticipated group stage clash. Can the German machine be stopped?',date:'Jun 13, 2026',read:'4 min',tag:'Match Preview',
@@ -797,12 +814,15 @@
           '<p>The challenge is composure in the final third — converting pressure into goals. If they take their chances early, this could be the night Canadian football history is made.</p>' +
           '<p><strong>AI Prediction:</strong> Canada 2–0 Bosnia, with the home crowd roaring them forward.</p>'}
   ];
-  document.getElementById('articles').innerHTML = ARTICLES.map(function(a, idx){
-    return '<div class="article" onclick="openArticle('+idx+')"><div style="display:flex;gap:8px;margin-bottom:4px;align-items:center;">' +
-      '<span class="tag">'+a.tag+'</span><span style="color:#666;font-size:12px;">'+a.date+' · '+a.read+' read</span></div>' +
-      '<h3>'+a.title+'</h3><p>'+a.excerpt+'</p>' +
-      '<span style="color:#4FC3F7;font-size:13px;font-weight:600;">Read full analysis →</span></div>';
-  }).join('');
+  function renderArticles() {
+    document.getElementById('articles').innerHTML = ARTICLES.map(function(a, idx){
+      return '<div class="article" onclick="openArticle('+idx+')"><div style="display:flex;gap:8px;margin-bottom:4px;align-items:center;">' +
+        '<span class="tag">'+a.tag+'</span><span style="color:#666;font-size:12px;">'+a.date+' · '+a.read+' read</span></div>' +
+        '<h3>'+a.title+'</h3><p>'+a.excerpt+'</p>' +
+        '<span style="color:#4FC3F7;font-size:13px;font-weight:600;">Read full analysis →</span></div>';
+    }).join('');
+  }
+  renderArticles();
 
   function openArticle(idx) {
     var a = ARTICLES[idx];
@@ -944,48 +964,46 @@
     });
   }
 
-  // Submit Predictions button
-  var subBtn = document.getElementById('submit-predictions');
-  if (subBtn) {
-    subBtn.addEventListener('click', async function() {
-      // Predictions must belong to a user (for the dashboard + leaderboard).
-      var sessionRes = await sb.auth.getSession();
-      if (!sessionRes.data.session) {
-        openAuth('signup', 'Create a free account to save your predictions and join the leaderboard.');
-        return;
-      }
-      var userId = sessionRes.data.session.user.id;
+  // Submit Predictions (global so it works even after the predictor re-renders).
+  async function submitPredictions() {
+    var subBtn = document.getElementById('submit-predictions');
+    // Predictions must belong to a user (for the dashboard + leaderboard).
+    var sessionRes = await sb.auth.getSession();
+    if (!sessionRes.data.session) {
+      openAuth('signup', 'Create a free account to save your predictions and join the leaderboard.');
+      return;
+    }
+    var userId = sessionRes.data.session.user.id;
 
-      var rows = [];
-      document.querySelectorAll('#predict-matches .match').forEach(function(row) {
-        var home = row.querySelector('.pred-home').value;
-        var away = row.querySelector('.pred-away').value;
-        if (home === '' && away === '') return; // skip matches left blank
-        rows.push({
-          user_id: userId,
-          match_label: row.getAttribute('data-label'),
-          home_score: home === '' ? null : parseInt(home, 10),
-          away_score: away === '' ? null : parseInt(away, 10)
-        });
+    var rows = [];
+    document.querySelectorAll('#predict-matches .match').forEach(function(row) {
+      var home = row.querySelector('.pred-home').value;
+      var away = row.querySelector('.pred-away').value;
+      if (home === '' && away === '') return; // skip matches left blank
+      rows.push({
+        user_id: userId,
+        match_label: row.getAttribute('data-label'),
+        home_score: home === '' ? null : parseInt(home, 10),
+        away_score: away === '' ? null : parseInt(away, 10)
       });
-      if (rows.length === 0) { alert('Enter at least one score to submit.'); return; }
-
-      subBtn.disabled = true;
-      subBtn.textContent = 'Submitting…';
-
-      var result = await sb.from('predictions').insert(rows);
-      if (result.error) {
-        console.error('Predictions failed:', result.error);
-        subBtn.disabled = false;
-        subBtn.textContent = 'Submit Predictions';
-        alert('Could not save your predictions. Please try again.');
-        return;
-      }
-      document.getElementById('predict-success').classList.remove('hidden');
-      subBtn.textContent = 'Predictions Submitted ✓';
-      subBtn.style.opacity = '0.7';
-      if (typeof refreshAccount === 'function') refreshAccount();
     });
+    if (rows.length === 0) { alert('Enter at least one score to submit.'); return; }
+
+    subBtn.disabled = true;
+    subBtn.textContent = 'Submitting…';
+
+    var result = await sb.from('predictions').insert(rows);
+    if (result.error) {
+      console.error('Predictions failed:', result.error);
+      subBtn.disabled = false;
+      subBtn.textContent = 'Submit Predictions';
+      alert('Could not save your predictions. Please try again.');
+      return;
+    }
+    document.getElementById('predict-success').classList.remove('hidden');
+    subBtn.textContent = 'Predictions Submitted ✓';
+    subBtn.style.opacity = '0.7';
+    if (typeof refreshAccount === 'function') refreshAccount();
   }
 
   // Mobile menu toggle
@@ -1200,6 +1218,7 @@
       var up   = all.filter(function(m){ return m.status === 'UPCOMING'; }).sort(function(a,b){ return new Date(a.utc) - new Date(b.utc); });
       MATCHES = live.concat(ft.slice(0,3)).concat(up.slice(0,9)); // live first, a few recent results, then next up
       renderMatches();
+      if (typeof syncPredictor === 'function') syncPredictor();   // predictor follows the next real upcoming matches
     } catch (e) { /* offline / local preview — keep the scheduled fixtures */ }
   }
 
@@ -1208,11 +1227,25 @@
   if (freeBtn) freeBtn.addEventListener('click', function(){ openAuth('signup'); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAuth(); });
 
+  // ---------- AI match analysis (real Claude-written previews via /api/analysis) ----------
+  async function loadAnalysis() {
+    try {
+      var res = await fetch('/api/analysis', { cache: 'no-store' });
+      if (!res.ok) return;                       // local preview / not deployed → keep demo articles
+      var data = await res.json();
+      if (data.articles && data.articles.length) {
+        ARTICLES = data.articles;                // swap demo articles for fresh AI ones
+        renderArticles();
+      }
+    } catch (e) { /* offline — keep the demo articles */ }
+  }
+
   sb.auth.onAuthStateChange(function(){ refreshAccount(); });
   refreshAccount();
   loadLeaderboard();
   refreshLiveScores();
   setInterval(refreshLiveScores, 30000); // refresh live scores every 30s
+  loadAnalysis();
 </script>
 </body>
 </html>
