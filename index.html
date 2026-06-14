@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MatchDay 2026 | FIFA World Cup Hub</title>
-<meta name="description" content="Live scores, predictions, team stats, travel guides and AI match analysis for FIFA World Cup 2026 - Canada, USA & Mexico" />
+<meta name="description" content="Live scores, predictions, team stats, travel guides and in-depth match analysis for FIFA World Cup 2026 - Canada, USA & Mexico" />
 <meta name="keywords" content="World Cup 2026, FIFA, soccer, football, live scores, predictions, bracket" />
 <meta property="og:title" content="MatchDay 2026 | FIFA World Cup Hub" />
 <meta property="og:description" content="Your ultimate destination for World Cup 2026" />
@@ -330,7 +330,7 @@
       </div>
       <div class="hero-btns">
         <a href="#predict" class="btn-fill">🏆 Make Predictions</a>
-        <a href="#analysis" class="btn-outline">🤖 AI Analysis</a>
+        <a href="#analysis" class="btn-outline">📰 Match Analysis</a>
       </div>
     </div>
   </section>
@@ -383,7 +383,7 @@
       <div style="background:linear-gradient(135deg,#1A1A2E,#2A1A3E);border:1px solid rgba(255,215,0,0.33);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
         <div>
           <div class="bebas" style="color:#FFD700;font-size:24px;">🏆 GO PREMIUM</div>
-          <p style="color:#B0B0C0;font-size:14px;">Full bracket + AI predictions + Advanced stats</p>
+          <p style="color:#B0B0C0;font-size:14px;">Full bracket + Expert predictions + Advanced stats</p>
         </div>
         <div style="text-align:right;">
           <div class="bebas" style="font-size:32px;color:#FFD700;">$4.99<span style="font-size:16px;color:#888;">/month</span></div>
@@ -405,8 +405,7 @@
     <!-- ANALYSIS -->
     <section class="block" id="analysis">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-        <h2 class="sec" style="margin:0;">AI MATCH ANALYSIS</h2>
-        <span style="background:rgba(79,195,247,0.13);color:#4FC3F7;border:1px solid rgba(79,195,247,0.27);padding:4px 10px;border-radius:6px;font-size:12px;font-weight:600;">Powered by AI</span>
+        <h2 class="sec" style="margin:0;">MATCH ANALYSIS</h2>
       </div>
       <p style="color:#B0B0C0;margin-bottom:1.5rem;">In-depth match previews and predictions, fresh every day.</p>
       <div id="articles"></div>
@@ -439,7 +438,7 @@
     <!-- PRICING -->
     <section class="block" id="pricing">
       <h2 class="sec">GO PREMIUM</h2>
-      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Unlock the full bracket, AI predictions, and advanced stats. Cancel anytime.</p>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Unlock the full bracket, expert predictions, and advanced stats. Cancel anytime.</p>
       <div class="plans">
         <div class="plan">
           <div class="pname">FREE</div>
@@ -449,7 +448,7 @@
             <li>Predict group-stage matches</li>
             <li>Global leaderboard</li>
             <li class="no">Full knockout bracket</li>
-            <li class="no">AI match predictions</li>
+            <li class="no">Expert match predictions</li>
             <li class="no">Advanced team stats</li>
           </ul>
           <button class="current" id="plan-free-btn">Sign up free</button>
@@ -460,7 +459,7 @@
           <ul>
             <li>Everything in Free</li>
             <li>Full knockout bracket predictor</li>
-            <li>AI predictions on every match</li>
+            <li>Expert predictions on every match</li>
             <li>Advanced team &amp; player stats</li>
             <li>Ad-free experience</li>
             <li>Premium badge on the leaderboard</li>
@@ -486,7 +485,7 @@
     <section class="newsletter">
       <div style="font-size:40px;margin-bottom:8px;">⚽</div>
       <h2>THE DAILY KICK</h2>
-      <p>Match previews, AI predictions, and World Cup news every morning. Free bracket PDF on signup!</p>
+      <p>Match previews, expert predictions, and World Cup news every morning. Free bracket PDF on signup!</p>
       <div class="nl-form" id="nl-form">
         <input type="email" id="nl-email" placeholder="your@email.com" />
         <button onclick="subscribe()">Get Free Bracket</button>
@@ -505,7 +504,6 @@
     <div style="display:flex;gap:8px;align-items:center;">
       <span class="tag" id="modal-tag"></span>
       <span style="color:#666;font-size:12px;" id="modal-meta"></span>
-      <span style="background:rgba(79,195,247,0.13);color:#4FC3F7;border:1px solid rgba(79,195,247,0.27);padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600;">AI Generated</span>
     </div>
     <h2 id="modal-title"></h2>
     <div class="modal-body" id="modal-body"></div>
@@ -551,7 +549,7 @@
   <div class="foot-inner">
     <div>
       <span class="bebas" style="font-size:24px;color:#FFD700;">MATCHDAY 2026</span>
-      <p style="color:#666;font-size:13px;margin-top:8px;max-width:280px;">Your ultimate FIFA World Cup 2026 hub. Live scores, AI predictions, and more.</p>
+      <p style="color:#666;font-size:13px;margin-top:8px;max-width:280px;">Your ultimate FIFA World Cup 2026 hub. Live scores, expert predictions, and more.</p>
     </div>
     <div style="display:flex;gap:3rem;flex-wrap:wrap;">
       <div>
@@ -754,7 +752,7 @@
 
   var FEATURES = [
     {ic:'🏆',title:'Bracket Predictor',desc:'Predict every match and compete on our global leaderboard. Free to play!',cta:'Start Predicting →',color:'#FFD700',href:'#predict'},
-    {ic:'🤖',title:'AI Match Analysis',desc:'AI generates in-depth match previews and predictions for every game.',cta:'Read Analysis →',color:'#4FC3F7',href:'#analysis'},
+    {ic:'📰',title:'Match Analysis',desc:'In-depth match previews and predictions for every game, fresh every day.',cta:'Read Analysis →',color:'#4FC3F7',href:'#analysis'},
     {ic:'📊',title:'Odds Comparison',desc:'Compare betting odds from top bookmakers and find the best value.',cta:'View Odds →',color:'#81C784',href:'#odds'},
     {ic:'✈️',title:'Fan Travel Guide',desc:'Hotels, flights, and tips for all 16 World Cup stadiums across North America.',cta:'Plan Trip →',color:'#FF8A65',href:'#travel'}
   ];
@@ -792,11 +790,11 @@
   syncPredictor();
 
   var ARTICLES = [
-    {title:'Brazil vs Germany: The Clash of Titans',excerpt:'AI analysis of the most anticipated group stage clash. Can the German machine be stopped?',date:'Jun 13, 2026',read:'4 min',tag:'Match Preview',
+    {title:'Brazil vs Germany: The Clash of Titans',excerpt:'In-depth analysis of the most anticipated group stage clash. Can the German machine be stopped?',date:'Jun 13, 2026',read:'4 min',tag:'Match Preview',
      body:'<p>The Group D opener between Brazil and Germany is the tie everyone circled the moment the draw was made. Two of the most decorated nations in World Cup history meet at MetLife Stadium, and our model gives Brazil a slight edge at 42% to win, with Germany at 34% and a draw at 24%.</p>' +
           '<p>Brazil\'s attacking depth is the difference-maker. With pace on both flanks and a midfield that can control tempo, they generate high-quality chances at a rate few teams can match. Germany, meanwhile, rely on structure and set-piece efficiency — areas where they rank among the tournament\'s best.</p>' +
           '<p>The key battle is in midfield. If Germany can slow the game and force Brazil into wide areas, they neutralize the Brazilian press. But if Brazil win the first 20 minutes, expect an early goal and an open game.</p>' +
-          '<p><strong>AI Prediction:</strong> Brazil 2–1 Germany. Expect goals, expect drama, and expect this one to set the tone for the entire group.</p>'},
+          '<p><strong>Our Prediction:</strong> Brazil 2–1 Germany. Expect goals, expect drama, and expect this one to set the tone for the entire group.</p>'},
     {title:'Top 5 Dark Horses to Watch in 2026',excerpt:'Morocco, Japan, and three more teams that could shock the world this summer in North America.',date:'Jun 10, 2026',read:'5 min',tag:'Analysis',
      body:'<p>Every World Cup has its surprise package. After Morocco\'s historic semifinal run in 2022, the idea of a "dark horse" reaching the latter stages no longer feels far-fetched. Here are five teams our model flags as overperformers waiting to happen.</p>' +
           '<p><strong>1. Morocco</strong> — Proven on the biggest stage, with a disciplined defense and a counter-attack built for tournament football.</p>' +
@@ -804,15 +802,15 @@
           '<p><strong>3. Senegal</strong> — Pace, power, and a core of players competing at Europe\'s top clubs.</p>' +
           '<p><strong>4. Croatia</strong> — Never count out a side that simply refuses to lose. Their midfield experience is unmatched.</p>' +
           '<p><strong>5. USA</strong> — Home advantage, a young hungry squad, and 11 stadiums full of support. The conditions are set for a deep run.</p>'},
-    {title:"Will USA's Home Advantage Be Decisive?",excerpt:'Playing in front of massive home crowds across 11 US venues — our AI model says yes.',date:'Jun 9, 2026',read:'3 min',tag:'Prediction',
+    {title:"Will USA's Home Advantage Be Decisive?",excerpt:'Playing in front of massive home crowds across 11 US venues — our analysis says yes.',date:'Jun 9, 2026',read:'3 min',tag:'Prediction',
      body:'<p>Host nations historically overperform, and the data backs it up: since 1990, hosts advance from the group stage over 80% of the time. For the USA in 2026, that edge could be even larger.</p>' +
           '<p>With 11 of the 16 venues on US soil, the Americans will play in front of enormous, partisan crowds with minimal travel — a logistical advantage their opponents simply won\'t have. Reduced travel fatigue and familiar conditions consistently translate into measurable performance gains.</p>' +
           '<p>Our model projects the USA to top their group and reach at least the quarterfinals, with a real chance of going further if the bracket opens up.</p>'},
-    {title:"Canada's Mission: Score Their First World Cup Goals",excerpt:'As hosts, Canada faces Bosnia in Toronto. Our AI predicts how they will perform on home soil.',date:'Jun 8, 2026',read:'4 min',tag:'Match Preview',
+    {title:"Canada's Mission: Score Their First World Cup Goals",excerpt:'As hosts, Canada faces Bosnia in Toronto. Our preview of how they will perform on home soil.',date:'Jun 8, 2026',read:'4 min',tag:'Match Preview',
      body:'<p>Canada arrive at their home World Cup with momentum and belief. After failing to score in 2022, the storyline writes itself: the first World Cup goal on home soil at a sold-out BMO Field in Toronto.</p>' +
           '<p>Their opener against Bosnia is winnable. Canada\'s wing play and transition speed should create chances, and the emotional lift of a home crowd cannot be overstated for a young squad.</p>' +
           '<p>The challenge is composure in the final third — converting pressure into goals. If they take their chances early, this could be the night Canadian football history is made.</p>' +
-          '<p><strong>AI Prediction:</strong> Canada 2–0 Bosnia, with the home crowd roaring them forward.</p>'}
+          '<p><strong>Our Prediction:</strong> Canada 2–0 Bosnia, with the home crowd roaring them forward.</p>'}
   ];
   function renderArticles() {
     document.getElementById('articles').innerHTML = ARTICLES.map(function(a, idx){
@@ -1118,7 +1116,7 @@
     document.getElementById('dash-greeting').textContent = 'Welcome back, ' + (profile.display_name || 'fan') + '!';
     document.getElementById('dash-plan').textContent = profile.is_premium
       ? '⭐ Premium member — full access unlocked'
-      : 'Free plan — upgrade for the full bracket + AI predictions';
+      : 'Free plan — upgrade for the full bracket + expert predictions';
     document.getElementById('dash-points').textContent = profile.points || 0;
 
     var preds = await sb.from('predictions').select('match_label,home_score,away_score,created_at').eq('user_id', user.id).order('created_at', { ascending: false });
