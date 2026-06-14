@@ -91,6 +91,25 @@
   .fx-predict { background: rgba(255,215,0,0.12); color: #FFD700; border: 1px solid rgba(255,215,0,0.3); padding: 6px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .2s ease; white-space: nowrap; }
   .fx-predict:hover { background: rgba(255,215,0,0.22); }
   .live-pill { display: inline-flex; align-items: center; gap: 7px; color: #fff; background: rgba(230,57,70,0.18); border: 1px solid rgba(230,57,70,0.5); font-size: 12px; font-weight: 700; letter-spacing: 1px; padding: 5px 12px; border-radius: 999px; }
+  /* Extra match info line (kickoff time, live clock, half-time score) */
+  .fx-detail { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 10px; }
+  .fx-detail .pill { font-size: 11px; font-weight: 600; color: #B0B0C0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .fx-detail .pill.clock { color: #E63946; border-color: rgba(230,57,70,0.4); background: rgba(230,57,70,0.1); }
+
+  /* Match highlights cards */
+  .hl-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 14px; }
+  .hl-card { background: linear-gradient(180deg,#20203a 0%,#1A1A2E 100%); border: 1px solid rgba(255,215,0,0.12); border-radius: 14px; overflow: hidden; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+  .hl-card:hover { border-color: rgba(255,215,0,0.45); transform: translateY(-3px); box-shadow: 0 12px 34px rgba(0,0,0,0.4); }
+  .hl-thumb { position: relative; height: 96px; background: radial-gradient(circle at 50% 40%, #2a2a4a 0%, #14142a 100%); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hl-play { width: 46px; height: 46px; border-radius: 50%; background: rgba(230,57,70,0.92); color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; padding-left: 3px; box-shadow: 0 4px 16px rgba(230,57,70,0.5); }
+  .hl-body { padding: 14px 16px 16px; }
+  .hl-teams { display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 14px; color: #F0F0F0; }
+  .hl-teams img { width: 22px; height: 22px; object-fit: contain; border-radius: 3px; }
+  .hl-teams span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; }
+  .hl-score { font-family: 'Bebas Neue',cursive; font-size: 22px; color: #FFD700; letter-spacing: 1px; max-width: none !important; }
+  .hl-meta { text-align: center; color: #777; font-size: 12px; margin: 8px 0 12px; }
+  .hl-btn { display: block; text-align: center; background: rgba(230,57,70,0.14); color: #ff6b78; border: 1px solid rgba(230,57,70,0.4); padding: 9px; border-radius: 9px; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .2s ease; }
+  .hl-btn:hover { background: rgba(230,57,70,0.26); }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
@@ -363,6 +382,13 @@
       </div>
       <div id="matches" class="fixtures"></div>
       <div id="vpn-slot"></div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section class="block" id="highlights-sec">
+      <h2 class="sec">MATCH HIGHLIGHTS</h2>
+      <p style="color:#B0B0C0;margin-bottom:1.5rem;">Catch up on the action — watch the official highlights from the latest finished matches.</p>
+      <div id="highlights" class="hl-grid"></div>
     </section>
 
     <!-- TEAMS -->
@@ -684,14 +710,25 @@
   function renderMatches() {
     var liveCount = 0;
     document.getElementById('matches').innerHTML = MATCHES.map(function(m){
-      var statusHtml, middle, liveClass = '';
+      var statusHtml, middle, liveClass = '', detail = '';
+      var ht = (m.hht!=null && m.aht!=null) ? ('HT ' + m.hht + '–' + m.aht) : '';
       if (m.status === 'LIVE') {
         liveCount++; liveClass = ' is-live';
         statusHtml = '<span class="mstatus live"><span class="livedot"></span>LIVE' + (m.min ? '&nbsp;' + m.min : '') + '</span>';
         middle = '<div class="fx-score">' + (m.hs==null?0:m.hs) + '<span class="sep">:</span>' + (m.as==null?0:m.as) + '</div>';
+        var liveBits = [];
+        if (m.min) liveBits.push('<span class="pill clock">⏱ ' + m.min + '</span>');
+        if (ht) liveBits.push('<span class="pill">' + ht + '</span>');
+        if (m.time) liveBits.push('<span class="pill">Kick-off ' + m.time + '</span>');
+        detail = liveBits.length ? '<div class="fx-detail">' + liveBits.join('') + '</div>' : '';
       } else if (m.status === 'FT') {
         statusHtml = '<span class="mstatus ft">FULL-TIME</span>';
         middle = '<div class="fx-score">' + (m.hs==null?0:m.hs) + '<span class="sep">:</span>' + (m.as==null?0:m.as) + '</div>';
+        var ftBits = [];
+        if (ht) ftBits.push('<span class="pill">' + ht + '</span>');
+        if (m.date) ftBits.push('<span class="pill">' + m.date + '</span>');
+        if (m.time) ftBits.push('<span class="pill">Kick-off ' + m.time + '</span>');
+        detail = ftBits.length ? '<div class="fx-detail">' + ftBits.join('') + '</div>' : '';
       } else {
         statusHtml = '<span class="mstatus upc">' + m.date + ' · ' + m.time + '</span>';
         middle = '<div class="fx-vs">VS</div>';
@@ -705,6 +742,7 @@
           middle +
           '<div class="fx-team away">' + teamImg(m.crestAway, m.af, m.away) + '<span class="tn">' + m.away + '</span></div>' +
         '</div>' +
+        detail +
         '<div class="fx-bottom"><span class="fx-stadium">' + pinIcon() + '<span>' + place + '</span></span>' +
         '<a href="#predict" class="fx-predict">Predict →</a></div>' +
       '</div>';
@@ -715,6 +753,39 @@
       : '<span style="color:#666;font-size:13px;">Scores update live during matches</span>';
   }
   renderMatches();
+
+  // ---------- Match highlights (finished matches → official YouTube highlights) ----------
+  // No paid video API needed: each card links to YouTube's results for that exact
+  // fixture, so it always lands on the official/broadcaster highlight reel.
+  function renderHighlights() {
+    var el = document.getElementById('highlights');
+    if (!el) return;
+    var src = (window.ALL_MATCHES && window.ALL_MATCHES.length) ? window.ALL_MATCHES : MATCHES;
+    var done = src.filter(function(m){ return m.status === 'FT'; })
+                  .sort(function(a,b){ return new Date(b.utc) - new Date(a.utc); })
+                  .slice(0, 6);
+    if (!done.length) {
+      el.innerHTML = '<p style="color:#777;">Highlights appear here as soon as the first matches finish — check back after kick-off! ⚽</p>';
+      return;
+    }
+    el.innerHTML = done.map(function(m){
+      var q = encodeURIComponent(m.home + ' vs ' + m.away + ' FIFA World Cup 2026 highlights');
+      var url = 'https://www.youtube.com/results?search_query=' + q;
+      return '<div class="hl-card">' +
+        '<div class="hl-thumb"><span class="hl-play">▶</span></div>' +
+        '<div class="hl-body">' +
+          '<div class="hl-teams">' +
+            teamImg(m.crestHome, m.hf, m.home) + '<span>' + m.home + '</span>' +
+            '<span class="hl-score">' + (m.hs==null?0:m.hs) + '–' + (m.as==null?0:m.as) + '</span>' +
+            '<span>' + m.away + '</span>' + teamImg(m.crestAway, m.af, m.away) +
+          '</div>' +
+          '<div class="hl-meta">' + (m.label || 'World Cup') + (m.date ? ' · ' + m.date : '') + '</div>' +
+          '<a class="hl-btn" href="' + url + '" target="_blank" rel="noopener">▶ Watch Highlights</a>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+  renderHighlights();
 
   // All 48 nations of the 2026 World Cup, grouped A–L.
   var TEAMS = [
@@ -1211,11 +1282,13 @@
       var data = await res.json();
       var all = data.matches || [];
       if (!all.length) return;
+      window.ALL_MATCHES = all;                                   // keep full list for the highlights section
       var live = all.filter(function(m){ return m.status === 'LIVE'; });
       var ft   = all.filter(function(m){ return m.status === 'FT'; }).sort(function(a,b){ return new Date(b.utc) - new Date(a.utc); });
       var up   = all.filter(function(m){ return m.status === 'UPCOMING'; }).sort(function(a,b){ return new Date(a.utc) - new Date(b.utc); });
       MATCHES = live.concat(ft.slice(0,3)).concat(up.slice(0,9)); // live first, a few recent results, then next up
       renderMatches();
+      renderHighlights();                                         // refresh highlights as matches finish
       if (typeof syncPredictor === 'function') syncPredictor();   // predictor follows the next real upcoming matches
     } catch (e) { /* offline / local preview — keep the scheduled fixtures */ }
   }
