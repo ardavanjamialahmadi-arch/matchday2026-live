@@ -1201,7 +1201,10 @@
     btn.disabled = true;
     btn.textContent = 'Joining…';
 
-    function showSuccess() {
+    function showSuccess(emailed) {
+      if (emailed) {
+        document.getElementById('nl-success').innerHTML = '🎉 You\'re in! Check your inbox for a welcome email.';
+      }
       document.getElementById('nl-form').classList.add('hidden');
       document.getElementById('nl-success').classList.remove('hidden');
     }
@@ -1211,19 +1214,15 @@
       alert('Something went wrong. Please try again in a moment.');
     }
 
-    fetch(SUPABASE_URL + '/rest/v1/subscribers', {
+    // Posts to our serverless function, which saves the email + sends a welcome
+    // email via Brevo (the API key stays server-side).
+    fetch('/api/subscribe', {
       method: 'POST',
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
     }).then(function (res) {
-      // 201 = inserted, 409 = already subscribed (unique email). Both are a win for the user.
-      if (res.ok || res.status === 409) { showSuccess(); }
-      else { res.text().then(function (t) { console.error('Subscribe failed:', res.status, t); }); fail(); }
+      if (!res.ok) { res.text().then(function (t) { console.error('Subscribe failed:', res.status, t); }); fail(); return; }
+      res.json().then(function (data) { showSuccess(data && data.emailed); }).catch(function () { showSuccess(false); });
     }).catch(function (err) {
       console.error('Subscribe network error:', err);
       fail();
